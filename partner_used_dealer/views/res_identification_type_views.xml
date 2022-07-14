@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id='view_identification_type_form' model='ir.ui.view'>
+        <field name='name'>view.identification.type.form</field>
+        <field name='model'>res.identification.type</field>
+        <field name='type'>form</field>
+        <field name='arch' type='xml'>
+            <form string='Identification Type'>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id='view_identification_type_tree' model='ir.ui.view'>
+        <field name='name'>view.identification.type.tree</field>
+        <field name='model'>res.identification.type</field>
+        <field name='type'>tree</field>
+        <field name='arch' type='xml'>
+            <tree string='Identification Types'>
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+    
+    <record id='action_identification_type' model='ir.actions.act_window'>
+        <field name='name'>Identification Types</field>
+        <field name='res_model'>res.identification.type</field>
+        <field name='view_mode'>tree,form</field>
+        <field name="view_id" ref='view_identification_type_tree' />
+    </record>
+    <menuitem
+        id="menu_vendor_in_config_purchase"
+        name="Vendors"
+        parent=""
+        sequence="40"
+    />
+    <menuitem
+        id="menu_identification_type"
+        name="Identification Types"
+        parent="lunch_product_category_menu"
+        action=""
+        sequence="10"
+    />
+</odoo>
