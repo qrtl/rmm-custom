@@ -8,4 +8,3 @@ class ResIdentificationType(models.Model):
     _name = "res.identification.type"
 
     name = fields.Char(required=True)
-    

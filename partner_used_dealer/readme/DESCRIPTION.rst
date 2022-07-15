@@ -1,3 +1,3 @@
 This module does the following:
 
-- Adds auction related fields to product.template model.
+- Adds the information to Used Dealer to res.partner
