@@ -6,11 +6,12 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
-            <xpath
-                expr="//notebook/page[@name='contact_addresses']"
-                position="before"
-            >
-                <page string="Secondhand Attributes" name="secondhand_attributes" autofocus="autofocus">
+            <xpath expr="//notebook/page[@name='contact_addresses']" position="before">
+                <page
+                    string="Secondhand Attributes"
+                    name="secondhand_attributes"
+                    autofocus="autofocus"
+                >
                     <group>
                         <field name="date_birth" widget="date" />
                         <field name="occupation_id" />

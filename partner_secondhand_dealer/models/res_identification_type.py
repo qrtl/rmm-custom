@@ -4,7 +4,7 @@
 from odoo import fields, models
 
 
-class ResIdentificationType(models.Model):
+class IdentificationType(models.Model):
     _name = "identification.type"
 
     name = fields.Char(required=True)
