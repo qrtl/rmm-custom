@@ -6,13 +6,18 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='function']" position="after">
-                <field name="date_of_birth" widget="date" />
-            </xpath>
-            <xpath expr="//field[@name='website']" position="after">
-                <field name="occupation_id" />
-                <field name="identification_type_id" />
-                <field name="identification_number" />
+            <xpath
+                expr="//notebook/page[@name='contact_addresses']"
+                position="before"
+            >
+                <page string="Secondhand Attributes" name="secondhand_attributes" autofocus="autofocus">
+                    <group>
+                        <field name="date_birth" widget="date" />
+                        <field name="occupation_id" />
+                        <field name="identification_type_id" />
+                        <field name="identification_number" />
+                    </group>
+                </page>
             </xpath>
             <xpath
                 expr="//field[@name='child_ids']/form//field[@name='mobile']"

@@ -3,7 +3,7 @@
 
     <record id='view_identification_type_form' model='ir.ui.view'>
         <field name='name'>view.identification.type.form</field>
-        <field name='model'>res.identification.type</field>
+        <field name='model'>identification.type</field>
         <field name='type'>form</field>
         <field name='arch' type='xml'>
             <form string='Identification Type'>
@@ -20,7 +20,7 @@
 
     <record id='view_identification_type_tree' model='ir.ui.view'>
         <field name='name'>view.identification.type.tree</field>
-        <field name='model'>res.identification.type</field>
+        <field name='model'>identification.type</field>
         <field name='type'>tree</field>
         <field name='arch' type='xml'>
             <tree create="1">
@@ -31,7 +31,7 @@
 
     <record id='action_identification_type' model='ir.actions.act_window'>
         <field name='name'>Identification Types</field>
-        <field name='res_model'>res.identification.type</field>
+        <field name='res_model'>identification.type</field>
         <field name='view_mode'>tree,form</field>
         <field name="view_id" ref='view_identification_type_tree' />
     </record>

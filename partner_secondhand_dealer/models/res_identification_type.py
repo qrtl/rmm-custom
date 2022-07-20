@@ -1,10 +1,10 @@
 # Copyright 2022 Quartile Limited
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import fields, models
 
 
 class ResIdentificationType(models.Model):
-    _name = "res.identification.type"
+    _name = "identification.type"
 
     name = fields.Char(required=True)
