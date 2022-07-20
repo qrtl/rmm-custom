@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_identification_type_user,identification_type_user,model_identification_type,base.group_user,1,0,0,0
+access_identification_type_manager,identification_type_manager,model_identification_type,purchase.group_purchase_manager,1,1,1,1
+access_occupation_user,res_occupation_user,model_res_occupation,base.group_user,1,0,0,0
+access_occupation_manager,res_occupation_manager,model_res_occupation,purchase.group_purchase_manager,1,1,1,1
