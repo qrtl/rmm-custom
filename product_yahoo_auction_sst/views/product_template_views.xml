@@ -6,6 +6,11 @@
         <field name="model">product.template</field>
         <field name="inherit_id" ref="product.product_template_form_view" />
         <field name="arch" type="xml">
+            <xpath expr="//group[@name='group_general']/.." position="inside">
+                <group>
+                    <field name="yahoo_product_state_id" />
+                </group>
+            </xpath>
             <xpath expr="//notebook" position="inside">
                 <page string="Yahoo Auctions">
                     <group>
@@ -25,7 +30,6 @@
                             <field name="carrier_size_id" />
                             <field name="deliver_prefecture" />
                             <field name="delivery_cites" />
-                            <field name="yahoo_product_state_id" />
                         </group>
                     </group>
                 </page>

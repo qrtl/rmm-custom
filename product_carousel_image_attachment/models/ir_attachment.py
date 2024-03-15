@@ -13,10 +13,15 @@ class IrAttachment(models.Model):
     def create(self, vals_list):
         attachments = super(IrAttachment, self).create(vals_list)
         for attachment in attachments:
-            if attachment.mimetype in IMAGE_TYPES and attachment.res_model in [
-                "product.template",
-                "product.product",
-            ]:
+            if (
+                attachment.mimetype in IMAGE_TYPES
+                and attachment.res_model
+                in [
+                    "product.template",
+                    "product.product",
+                ]
+                and not attachment.res_field
+            ):
                 vals = {}
                 # assignment for pt and p
                 if attachment.res_model == "product.template":
