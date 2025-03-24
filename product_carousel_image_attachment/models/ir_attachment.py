@@ -3,7 +3,7 @@
 
 from odoo import api, models
 
-IMAGE_TYPES = ["image/png", "image/jpeg", "image/bmp", "image/gif"]
+IMAGE_TYPES = ["image/png", "image/jpeg", "image/bmp", "image/tiff"]
 
 
 class IrAttachment(models.Model):
@@ -33,10 +33,15 @@ class IrAttachment(models.Model):
                     }
                 if attachment.res_model == "product.product":
                     p = self.env["product.product"].browse(attachment.res_id)
+                    # For product.product attachments, they are also added to
+                    # the extra images of the corresponding product template.
+                    # This prevents confusion when an added attachment does
+                    # not appear in the UI, as product template extra images
+                    # are displayed in the product.product form view.
                     vals = {
                         "name": attachment.name,
                         "image_1920": attachment.datas,
-                        "product_variant_id": p.id,
+                        "product_tmpl_id": p.product_tmpl_id.id,
                     }
                 self.env["product.image"].sudo().create(vals)
         return attachments
