@@ -23,6 +23,6 @@ class IrAttachment(models.Model):
                     res_model = "product.template"
                 else:
                     res_model = "product.product"
-                rec = self.env[res_model].browse(attachment.res_id)
+                self.env[res_model].browse(attachment.res_id)
                 attachment.name = f"{attachment.id}{attachment.name}"
         return attachments
