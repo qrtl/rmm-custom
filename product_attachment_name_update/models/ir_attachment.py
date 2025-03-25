@@ -24,5 +24,5 @@ class IrAttachment(models.Model):
                 else:
                     res_model = "product.product"
                 rec = self.env[res_model].browse(attachment.res_id)
-                attachment.name = f"[{rec.name}][{attachment.id}] {attachment.name}"
+                attachment.name = f"{attachment.id}{attachment.name}"
         return attachments
