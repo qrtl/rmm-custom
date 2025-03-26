@@ -1,0 +1,15 @@
+<odoo>
+  <record id="view_product_image_form_inherit_filename" model="ir.ui.view">
+    <field name="name">product.image.view.form.inherit.filename</field>
+    <field name="model">product.image</field>
+    <field name="inherit_id" ref="website_sale.view_product_image_form" />
+    <field name="arch" type="xml">
+        <field name="image_1920" position="before">
+            <field name="img_name" invisible="1" />
+        </field>
+        <field name="image_1920" position="attributes">
+            <attribute name="filename">img_name</attribute>
+        </field>
+    </field>
+  </record>
+</odoo>
