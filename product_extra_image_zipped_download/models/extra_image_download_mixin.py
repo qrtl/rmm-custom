@@ -7,7 +7,6 @@ import zipfile
 from datetime import datetime
 
 from odoo import models
-from odoo.tools.mimetypes import get_extension
 
 
 class ExtraImageDownloadMixin(models.Model):
@@ -21,10 +20,7 @@ class ExtraImageDownloadMixin(models.Model):
             extra_images = self.product_template_image_ids
             for img in extra_images:
                 image_data = base64.b64decode(img.image_1920)
-                filename = img.name
-                if not get_extension(filename):
-                    filename = img.img_name
-                filename = f"[{img.id}] {filename}"
+                filename = f"[{img.id}] {img.img_name}"
                 zipf.writestr(filename, image_data)
         zip_buffer.seek(0)
         zip_base64 = base64.b64encode(zip_buffer.read())
@@ -37,6 +33,7 @@ class ExtraImageDownloadMixin(models.Model):
                 "datas": zip_base64,
                 "mimetype": "application/zip",
                 "res_model": "product.template",
+                "is_image_attachment_zip": True,
                 "res_id": self[0].id,
             }
         )

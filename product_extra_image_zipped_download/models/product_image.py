@@ -15,6 +15,18 @@ class ProductImage(models.Model):
     update_imge_name = fields.Boolean()
 
     @api.model
+    def create(self, vals):
+        if not vals.get("img_name"):
+            name = vals.get("name")
+            image_data = base64.b64decode(vals["image_1920"])
+            mimetype = guess_mimetype(image_data)
+            extension = get_extension(name)
+            if not extension:
+                extension = mimetypes.guess_extension(mimetype)
+            vals["img_name"] = f"{name}{extension}" if extension else name
+        return super().create(vals)
+
+    @api.model
     def _cron_update_product_image(self, limit):
         images = self.search(
             [("img_name", "=", False), ("update_imge_name", "=", False)], limit=limit
