@@ -12,7 +12,6 @@ class ProductImage(models.Model):
     _inherit = "product.image"
 
     img_name = fields.Char("Image Name")
-    update_imge_name = fields.Boolean()
 
     @api.model
     def create(self, vals):
@@ -32,9 +31,7 @@ class ProductImage(models.Model):
 
     @api.model
     def _cron_update_product_image(self, limit):
-        images = self.search(
-            [("img_name", "=", False), ("update_imge_name", "=", False)], limit=limit
-        )
+        images = self.search([("img_name", "=", False)], limit=limit)
         for img in images:
             name = img.name
             image_data = base64.b64decode(img.image_1920)
@@ -45,4 +42,3 @@ class ProductImage(models.Model):
                 continue
             extension = mimetypes.guess_extension(mimetype)
             img.img_name = f"[{img.id}] {name}{extension}"
-            img.update_imge_name = True
