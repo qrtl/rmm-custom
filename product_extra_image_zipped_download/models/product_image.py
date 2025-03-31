@@ -16,15 +16,19 @@ class ProductImage(models.Model):
 
     @api.model
     def create(self, vals):
-        if not vals.get("img_name"):
-            name = vals.get("name")
-            image_data = base64.b64decode(vals["image_1920"])
-            mimetype = guess_mimetype(image_data)
-            extension = get_extension(name)
-            if not extension:
-                extension = mimetypes.guess_extension(mimetype)
-            vals["img_name"] = f"{name}{extension}" if extension else name
-        return super().create(vals)
+        res = super().create(vals)
+        for rec in res:
+            image_name = rec.img_name
+            if not rec.img_name:
+                name = rec.name
+                image_data = base64.b64decode(rec.image_1920)
+                mimetype = guess_mimetype(image_data)
+                extension = get_extension(name)
+                if not extension:
+                    extension = mimetypes.guess_extension(mimetype)
+                image_name = f"{name}{extension}" if extension else name
+            rec.img_name = f"[{rec.id}] {image_name}"
+        return res
 
     @api.model
     def _cron_update_product_image(self, limit):
@@ -40,5 +44,5 @@ class ProductImage(models.Model):
                 img.img_name = name
                 continue
             extension = mimetypes.guess_extension(mimetype)
-            img.img_name = f"{name}{extension}"
+            img.img_name = f"[{img.id}] {name}{extension}"
             img.update_imge_name = True

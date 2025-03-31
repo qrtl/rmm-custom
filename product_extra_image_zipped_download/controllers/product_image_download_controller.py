@@ -24,8 +24,7 @@ class ProductImageDownloadController(http.Controller):
                 images = getattr(record, "product_template_image_ids", [])
                 for img in images:
                     image_data = base64.b64decode(img.image_1920)
-                    filename = f"[{img.id}] {img.img_name}"
-                    zipf.writestr(filename, image_data)
+                    zipf.writestr(img.img_name, image_data)
         zip_buffer.seek(0)
         today_str = datetime.today().strftime("%Y_%m_%d")
         zip_filename = f"[{today_str}]_product_extra_images.zip"
