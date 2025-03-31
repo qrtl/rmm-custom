@@ -1,5 +1,4 @@
 from . import extra_image_download_mixin
-from . import ir_attachment
 from . import product_image
 from . import product_product
 from . import product_template
