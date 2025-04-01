@@ -26,7 +26,7 @@ class ProductImage(models.Model):
                 if not extension:
                     extension = mimetypes.guess_extension(mimetype)
                 image_name = f"{name}{extension}" if extension else name
-            rec.img_name = f"[{rec.id}] {image_name}"
+            rec.img_name = f"{rec.id}{image_name}"
         return res
 
     @api.model
@@ -38,7 +38,7 @@ class ProductImage(models.Model):
             mimetype = guess_mimetype(image_data)
             extension = get_extension(img.name)
             if extension:
-                img.img_name = name
+                img.img_name = f"{img.id}{name}"
                 continue
             extension = mimetypes.guess_extension(mimetype)
-            img.img_name = f"[{img.id}] {name}{extension}"
+            img.img_name = f"{img.id}{name}{extension}"
