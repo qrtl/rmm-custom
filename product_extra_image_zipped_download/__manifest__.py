@@ -10,7 +10,6 @@
     "depends": ["website_sale"],
     "data": [
         "data/extra_image_zipped_download.xml",
-        "data/scheduler.xml",
         "views/product_image_views.xml",
     ],
     "installable": True,

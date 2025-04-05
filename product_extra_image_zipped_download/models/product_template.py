@@ -6,4 +6,4 @@ from odoo import models
 
 class ProductTemplate(models.Model):
     _name = "product.template"
-    _inherit = ["product.template", "extra.image.download.mixin"]
+    _inherit = ["product.template", "extra.product.image.mixin"]

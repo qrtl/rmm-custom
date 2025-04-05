@@ -1,5 +1,5 @@
 # Copyright 2025 Quartile (https://www.quartile.co)
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 import base64
 import io
@@ -24,6 +24,8 @@ class ProductImageDownloadController(http.Controller):
                 images = getattr(record, "product_template_image_ids", [])
                 for img in images:
                     image_data = base64.b64decode(img.image_1920)
+                    if not img.img_name:
+                        img._assign_image_name()
                     zipf.writestr(img.img_name, image_data)
         zip_buffer.seek(0)
         today_str = datetime.today().strftime("%Y_%m_%d")
