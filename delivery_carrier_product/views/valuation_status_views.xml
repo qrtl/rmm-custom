@@ -1,0 +1,22 @@
+<odoo>
+    <record id="view_valuation_status_tree" model="ir.ui.view">
+        <field name="name">valuation.status.tree</field>
+        <field name="model">valuation.status</field>
+        <field name="arch" type="xml">
+            <tree editable="top">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_valuation_status" model="ir.actions.act_window">
+        <field name="name">Valuation Status</field>
+        <field name="res_model">valuation.status</field>
+        <field name="view_mode">tree</field>
+    </record>
+    <menuitem id="menu_valuation_status"
+        name="Valuation Status"
+        parent="purchase.menu_purchase_config"
+        action="action_valuation_status"
+        sequence="100"
+    />
+</odoo>

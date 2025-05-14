@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="board_delivery_carrier_dash_view" model="ir.ui.view">
+        <field name="name">delivery.carrier.board.kanban</field>
+        <field name="model">delivery.carrier.board</field>
+        <field name="arch" type="xml">
+            <kanban create="0">
+                <field name="name" />
+                <field name="board_type" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <div class="col-xs-6 o_kanban_primary_left">
+                                    <div
+                                        t-if="record.board_type.raw_value =='product'"
+                                        style="color:rgb(113,99,158)"
+                                    >
+                                        <a
+                                            class="product_box"
+                                            name="%(action_product_template_delivery_carrier_view)d"
+                                            type="action"
+                                        >
+                                            <center><i
+                                                    class="fa fa-mobile fa-7x"
+                                                    title="Products"
+                                                />
+                                            <h2>Products</h2></center>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="open_board_delivery_carrier_dash_action">
+        <field name="name">Delivery Carrier Board</field>
+        <field name="res_model">delivery.carrier.board</field>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="board_delivery_carrier_dash_view" />
+    </record>
+</odoo>
