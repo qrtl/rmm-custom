@@ -4,7 +4,8 @@
     <menuitem
         id="delivery_carrier_menu_root"
         name="Delivery Carrier"
-        groups="base_group_backend.group_backend_ui_users"
+        groups="delivery_carrier_product.group_delivery_carrier_user,base.group_user"
+        web_icon="delivery_carrier_product,static/description/icon.png"
         action="open_board_delivery_carrier_dash_action"
         sequence="28"
     />

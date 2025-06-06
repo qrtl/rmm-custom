@@ -13,12 +13,15 @@
         "purchase_stock",
     ],
     "data": [
+        "views/product_template_delivery_carrier_views.xml",
+        "views/delivery_carrier_board_views.xml",
         "security/ir.model.access.csv",
+        "security/delivery_security.xml",
         "data/delivery_carrier_board_data.xml",
         "data/menu_item_data.xml",
         "views/valuation_status_views.xml",
         "views/product_template_views.xml",
-        "views/delivery_carrier_board_views.xml",
+        "views/res_users_views.xml",
     ],
     "installable": True,
 }

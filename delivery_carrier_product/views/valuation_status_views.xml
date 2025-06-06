@@ -4,6 +4,7 @@
         <field name="model">valuation.status</field>
         <field name="arch" type="xml">
             <tree editable="top">
+                <field name="sequence" widget="handle"/>
                 <field name="name"/>
             </tree>
         </field>
