@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <record id="board_delivery_carrier_dash_view" model="ir.ui.view">
-        <field name="name">delivery.carrier.board.kanban</field>
-        <field name="model">delivery.carrier.board</field>
+    <record id="board_intake_evaluation_dash_view" model="ir.ui.view">
+        <field name="name">intake.evaluation.board.kanban</field>
+        <field name="model">intake.evaluation.board</field>
         <field name="arch" type="xml">
             <kanban create="0">
                 <field name="name" />
@@ -18,11 +18,11 @@
                                     >
                                         <a
                                             class="product_box"
-                                            name="%(action_product_template_delivery_carrier_view)d"
+                                            name="%(action_product_template_intake_evaluation_view)d"
                                             type="action"
                                         >
                                             <center><i
-                                                    class="fa fa-truck fa-7x"
+                                                    class="fa fa-archive fa-6x"
                                                     title="Products"
                                                 />
                                             <h2>Products</h2></center>
@@ -36,10 +36,10 @@
             </kanban>
         </field>
     </record>
-    <record model="ir.actions.act_window" id="open_board_delivery_carrier_dash_action">
-        <field name="name">Delivery Carrier Board</field>
-        <field name="res_model">delivery.carrier.board</field>
+    <record model="ir.actions.act_window" id="open_board_intake_evaluation_dash_action">
+        <field name="name">Intake Evaluation Board</field>
+        <field name="res_model">intake.evaluation.board</field>
         <field name="view_mode">kanban</field>
-        <field name="view_id" ref="board_delivery_carrier_dash_view" />
+        <field name="view_id" ref="board_intake_evaluation_dash_view" />
     </record>
 </odoo>

@@ -4,9 +4,9 @@
 from odoo import fields, models
 
 
-class DeliveryCarrierBoard(models.Model):
-    _name = "delivery.carrier.board"
-    _description = "Delivery Carrier Board"
+class IntakeEvaluationBoard(models.Model):
+    _name = "intake.evaluation.board"
+    _description = "Intake Evaluation Board"
 
     name = fields.Char()
     board_type = fields.Selection([("product", "Products")])

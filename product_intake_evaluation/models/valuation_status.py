@@ -11,5 +11,3 @@ class ValuationStatus(models.Model):
 
     sequence = fields.Integer()
     name = fields.Char()
-    fold = fields.Boolean()
-
