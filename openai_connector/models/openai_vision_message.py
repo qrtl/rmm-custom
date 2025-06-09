@@ -5,22 +5,13 @@ class OpenAIVisionMessage(models.Model):
     _name = "openai.vision.message"
     _description = "OpenAI Vision Message Line"
 
-    role = fields.Selection(
-        [("user", "User"), ("assistant", "Assistant")], default="user", required=True
-    )
     type = fields.Selection(
         [("input_text", "Text"), ("input_image", "Image URL")],
         default="input_text",
         required=True,
     )
     input_session_id = fields.Many2one("openai.vision.session", string="Input Session")
-    response_session_id = fields.Many2one(
-        "openai.vision.session", string="Response Session"
-    )
-    content = fields.Text(
-        required=True,
-    )
-    sequence = fields.Integer(default=10)
+    content = fields.Text(required=True)
 
     @api.model
     def to_openai_dict(self):

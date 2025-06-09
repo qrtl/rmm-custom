@@ -32,30 +32,9 @@
             <page string="Input Messages">
               <field
                                 name="input_message_ids"
-                                context="{'default_role': 'user'}"
                                 mode="tree"
                             >
-                <tree editable="bottom" default_order="sequence">
-                  <field name="sequence" />
-                  <field name="role" />
-                  <field name="type" />
-                  <field
-                                        name="content"
-                                        widget="text"
-                                        attrs="{'invisible': [('type', '!=', 'input_text')]}"
-                                    />
-                </tree>
-              </field>
-            </page>
-            <page string="Response Messages">
-              <field
-                                name="response_message_ids"
-                                context="{'default_role': 'assistant'}"
-                                mode="tree"
-                            >
-                <tree editable="bottom" default_order="sequence">
-                  <field name="sequence" />
-                  <field name="role" />
+                <tree editable="bottom">
                   <field name="type" />
                   <field
                                         name="content"
@@ -91,5 +70,13 @@
         parent="menu_openai_root"
         action="action_openai_vision_sessions"
         sequence="20"
+    />
+
+  <menuitem
+        id="menu_openai_root"
+        name="Vision"
+        parent="base.menu_custom"
+        sequence="90"
+        groups="base.group_system"
     />
 </odoo>

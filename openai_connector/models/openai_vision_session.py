@@ -24,9 +24,6 @@ class OpenAISession(models.Model):
     input_message_ids = fields.One2many(
         "openai.vision.message", "input_session_id", string="Input Messages"
     )
-    response_message_ids = fields.One2many(
-        "openai.vision.message", "response_session_id", string="Response Messages"
-    )
     previous_response_id = fields.Char(string="Previous Response ID")
     store_response = fields.Boolean(default=True)
     web_search = fields.Boolean(string="Use Web Search", default=False)
@@ -66,26 +63,14 @@ class OpenAISession(models.Model):
             raise UserError(_("OpenAI API key is not configured"))
         client = OpenAI(api_key=api_key)
         for record in self:
-            grouped = defaultdict(list)
-            for msg in record.input_message_ids:
-                key = (msg.sequence, msg.role)
-                grouped[key].append(msg)
             inputs = []
-            sorted_keys = sorted(grouped.keys(), key=lambda k: k[0])
-            for seq, role in sorted_keys:
-                components = grouped[(seq, role)]
-                roles = {c.role for c in components}
-                if len(roles) != 1:
-                    raise UserError(_("Multiple roles found at same sequence"))
-                contents = [
-                    c.to_openai_dict()
-                    for c in components
-                    if c.content and c.content.strip()
-                ]
-                if not contents:
-                    continue
-                inputs.append({"role": role, "content": contents})
-            text_format = None
+            for msg in record.input_message_ids:
+                if msg.content and msg.content.strip():
+                    inputs.append({
+                    "role": "user",
+                    "content": [msg.to_openai_dict()],
+                })
+            text_format = False
             if record.response_format_enabled:
                 try:
                     schema = json.loads(record.response_format_schema or "{}")
@@ -105,11 +90,12 @@ class OpenAISession(models.Model):
                     "input": inputs,
                     "temperature": record.temperature,
                     "store": record.store_response,
-                    "text": {"format": text_format},
                     "tools": [{"type": "web_search_preview"}]
                     if record.web_search
                     else [],
                 }
+                if text_format:
+                    params["text"] = {"format": text_format}
                 if record.previous_response_id:
                     params["previous_response_id"] = record.previous_response_id
                 response = client.responses.create(**params)
@@ -122,16 +108,6 @@ class OpenAISession(models.Model):
                 record.response_refusal_message = False
                 output = getattr(response, "output_text", "") or ""
                 result = output.strip()
-                next_seq = max(record.input_message_ids.mapped("sequence") or [0]) + 10
-                return_message = record.response_message_ids.create(
-                    {
-                        "response_session_id": record.id,
-                        "role": "assistant",
-                        "type": "input_text",
-                        "content": result,
-                        "sequence": next_seq,
-                    }
-                )
-                return return_message
+                return result
             except Exception as e:
                 raise UserError(_("OpenAI error:\n{}").format(e)) from e

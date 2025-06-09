@@ -36,7 +36,6 @@ class IrAttachment(models.Model):
             Message = self.env["openai.vision.message"]
             Message.create(
                 {
-                    "role": "user",
                     "type": "input_text",
                     "content": prompt_text,
                     "sequence": 10,
@@ -45,7 +44,6 @@ class IrAttachment(models.Model):
             )
             Message.create(
                 {
-                    "role": "user",
                     "type": "input_image",
                     "content": input_image,
                     "sequence": 10,

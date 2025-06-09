@@ -5,8 +5,6 @@
     <field name="model">openai.vision.message</field>
     <field name="arch" type="xml">
       <tree>
-        <field name="sequence" />
-        <field name="role" />
         <field name="type" />
         <field
                     name="content"
@@ -24,8 +22,6 @@
       <form string="Vision Message">
         <sheet>
           <group>
-            <field name="sequence" />
-            <field name="role" />
             <field name="type" />
           </group>
           <group string="Content">
