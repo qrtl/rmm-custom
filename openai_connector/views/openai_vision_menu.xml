@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- Root menu for ChatGPT Vision under Settings > Configuration > Technical -->
+  <menuitem 
+    id="menu_openai_root" 
+    name="Vision" 
+    parent="base.menu_custom" 
+    sequence="90" 
+    groups="base.group_system"/>
+</odoo>
