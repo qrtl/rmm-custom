@@ -4,8 +4,8 @@
         <field name="model">valuation.status</field>
         <field name="arch" type="xml">
             <tree editable="top">
-                <field name="sequence" widget="handle"/>
-                <field name="name"/>
+                <field name="sequence" widget="handle" />
+                <field name="name" />
             </tree>
         </field>
     </record>
@@ -14,7 +14,8 @@
         <field name="res_model">valuation.status</field>
         <field name="view_mode">tree</field>
     </record>
-    <menuitem id="menu_valuation_status"
+    <menuitem
+        id="menu_valuation_status"
         name="Valuation Status"
         parent="purchase.menu_purchase_config"
         action="action_valuation_status"
