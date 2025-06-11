@@ -1,0 +1,46 @@
+<odoo>
+  <record id="view_openai_vision_session_log_tree" model="ir.ui.view">
+    <field name="name">openai.vision.session.log.tree</field>
+    <field name="model">openai.vision.session.log</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="session_name" />
+        <field name="create_date" />
+        <field name="refusal_message" />
+        <field name="error_message" />
+      </tree>
+    </field>
+  </record>
+
+  <record id="view_openai_vision_session_log_form" model="ir.ui.view">
+    <field name="name">openai.vision.session.log.form</field>
+    <field name="model">openai.vision.session.log</field>
+    <field name="arch" type="xml">
+      <form string="Vision Session Log">
+        <sheet>
+          <group>
+            <field name="session_name" />
+            <field name="create_date" readonly="1"/>
+            <field name="refusal_message" widget="text"/>
+            <field name="error_message" widget="text"/>
+            <field name="request_payload" widget="text"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_openai_vision_session_logs" model="ir.actions.act_window">
+    <field name="name">Vision Session Logs</field>
+    <field name="res_model">openai.vision.session.log</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem
+    id="menu_openai_vision_session_logs"
+    name="Vision Session Logs"
+    parent="menu_openai_root"
+    action="action_openai_vision_session_logs"
+    sequence="30"
+  />
+</odoo>

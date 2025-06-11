@@ -1,0 +1,29 @@
+<!-- Example -->
+<odoo>
+  <data noupdate="0">
+
+    <record id="openai_vision_session_product_name_creater" model="openai.vision.session">
+      <field name="name">Product Name Creater</field>
+      <field name="model">gpt-4o</field>
+      <field name="temperature">1</field>
+      <field name="instruction">Please create product name.</field>
+      <field name="response_format_enabled">1</field>
+      <field name="response_format_schema">
+        <![CDATA[
+{
+  "type": "object",
+  "properties": {
+    "product_name": {"type": "string"}
+  },
+  "required": ["product_name"],
+  "additionalProperties": false,
+  "strict": true
+}
+        ]]>
+      </field>
+      <field name="web_search">1</field>
+      <field name="store_response">0</field>
+    </record>
+
+  </data>
+</odoo>
