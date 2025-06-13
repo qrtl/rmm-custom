@@ -77,17 +77,12 @@ class OpenAISession(models.Model):
                         "schema": schema,
                     }
                 }
-
             if self.previous_response_id:
                 request_payload["previous_response_id"] = self.previous_response_id
-
             self.request_payload = json.dumps(request_payload, indent=2)
-
         except Exception as e:
-            _logger.warning(
-                "Failed to compute request_payload for session %s: %s", self.name, e
-            )
-            self.request_payload = "{}"
+            raise UserError(_("Failed to compute request_payload for session %s: %s", self.name, e))
+
 
     @api.model
     def call_openAI(self):
@@ -100,21 +95,13 @@ class OpenAISession(models.Model):
         try:
             payload = json.loads(self.request_payload)
             response = client.responses.create(**payload)
-
             if self.store_response:
                 self.previous_response_id = getattr(response, "id", False)
-
             refusal = getattr(response, "refusal_reason", None)
             if refusal:
-                self.create_error_log("Refused by OpenAI", refusal)
                 raise UserError(_("OpenAI refused the request:\n{}").format(refusal))
             output = getattr(response, "output_text", "") or ""
             return output.strip()
 
         except Exception as e:
-            self.create_error_log(e, refusal)
             raise UserError(_("OpenAI error:\n{}").format(e)) from e
-
-    @api.model
-    def create_error_log(self, error, refusal):
-        self.env["openai.vision.session.log"].create_from_session(self, error, refusal)
