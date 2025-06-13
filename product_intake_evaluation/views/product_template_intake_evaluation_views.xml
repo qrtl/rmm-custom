@@ -149,5 +149,12 @@
             name="search_view_id"
             ref="product_template_intake_evaluation_search_view"
         />
+        <field
+            name="view_ids"
+            eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('product_template_intake_evaluation_tree_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('product_template_intake_evaluation_form_view')}),
+        ]"
+        />
     </record>
 </odoo>

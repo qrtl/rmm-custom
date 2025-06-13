@@ -21,11 +21,13 @@
                                             name="%(action_product_template_intake_evaluation_view)d"
                                             type="action"
                                         >
-                                            <center><i
+                                            <center>
+                                                <i
                                                     class="fa fa-archive fa-6x"
                                                     title="Products"
                                                 />
-                                            <h2>Products</h2></center>
+                                                <h2>Products</h2>
+                                            </center>
                                         </a>
                                     </div>
                                 </div>

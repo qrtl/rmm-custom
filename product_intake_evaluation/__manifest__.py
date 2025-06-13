@@ -1,16 +1,16 @@
 # Copyright 2025 Quartile (https://www.quartile.co)
-# License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
     "name": "Intake Evaluation Product",
-    "category": "Auction",
+    "category": "Intake Evaluation Product",
     "version": "15.0.1.0.0",
-    "author": "Quartile Limited",
+    "author": "Quartile",
     "website": "https://www.quartile.co",
-    "license": "LGPL-3",
+    "license": "AGPL-3",
     "depends": [
+        "purchase_stock",
         "product_state",
         "base_group_backend",
-        "purchase_stock",
     ],
     "data": [
         "views/product_template_intake_evaluation_views.xml",

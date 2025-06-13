@@ -1,7 +1,7 @@
 # Copyright 2025 Quartile (https://www.quartile.co)
-# License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import fields, models
+from odoo import Command, fields, models
 
 
 class ResUsers(models.Model):
@@ -27,10 +27,10 @@ class ResUsers(models.Model):
         group = self.env.ref("product_intake_evaluation.group_intake_evaluation_user")
         for user in self:
             if user.is_intake_evaluation_user:
-                user.groups_id = [(4, group.id)]
+                user.groups_id = [Command.link(group.id)]
                 user.partner_id.is_intake_evaluation_branch = True
             else:
-                user.groups_id = [(3, group.id)]
+                user.groups_id = [Command.unlink(group.id)]
 
     # --- Intake Evaluation Manager ---
     def _compute_is_intake_evaluation_manager(self):
@@ -45,7 +45,7 @@ class ResUsers(models.Model):
         )
         for user in self:
             if user.is_intake_evaluation_manager:
-                user.groups_id = [(4, group.id)]
+                user.groups_id = [Command.link(group.id)]
                 user.partner_id.is_intake_evaluation_branch = True
             else:
-                user.groups_id = [(3, group.id)]
+                user.groups_id = [Command.unlink(group.id)]
