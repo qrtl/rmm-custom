@@ -17,7 +17,7 @@ class ProductImage(models.Model):
         response_json_str = session.call_openAI()
         response_json = json.loads(response_json_str)
         product_name = response_json.get("product_name")
-        self.product_tmpl_id.name = product_name
+        self.with_context(lang="ja_JP").product_tmpl_id.name = product_name
 
     def action_generate_product_name(self):
         if not self.image_1920:

@@ -1,7 +1,5 @@
-<!-- Example -->
 <odoo>
-  <data noupdate="0">
-
+  <data>
     <record
             id="openai_vision_session_product_name_generator"
             model="openai.vision.session"
@@ -27,6 +25,5 @@
       <field name="web_search">1</field>
       <field name="store_response">0</field>
     </record>
-
   </data>
 </odoo>
