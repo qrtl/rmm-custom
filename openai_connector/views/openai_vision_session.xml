@@ -51,6 +51,14 @@
   </record>
 
   <menuitem
+        id="menu_openai_root"
+        name="Vision"
+        parent="base.menu_custom"
+        sequence="90"
+        groups="base.group_system"
+    />
+
+  <menuitem
         id="menu_openai_vision_sessions"
         name="Vision Sessions"
         parent="menu_openai_root"
@@ -58,11 +66,4 @@
         sequence="20"
     />
 
-  <menuitem
-        id="menu_openai_root"
-        name="Vision"
-        parent="base.menu_custom"
-        sequence="90"
-        groups="base.group_system"
-    />
 </odoo>

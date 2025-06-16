@@ -1,0 +1,22 @@
+<odoo>
+    <record id="view_product_image_form_inherit_custom_button" model="ir.ui.view">
+        <field name="name">product.image.view.form.inherit.custom.button</field>
+        <field name="model">product.image</field>
+        <field name="inherit_id" ref="website_sale.view_product_image_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//div[contains(@class, 'o_website_sale_image_modal')]"
+                position="before"
+            >
+                <header>
+                    <button
+                        name="action_generate_product_name"
+                        string="Generate Product Name"
+                        type="object"
+                        class="oe_highlight"
+                    />
+                </header>
+            </xpath>
+        </field>
+    </record>
+</odoo>

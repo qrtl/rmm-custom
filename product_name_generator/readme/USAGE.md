@@ -1,0 +1,3 @@
+- Go to the Product form.
+- Click on one of the Extra Product Media items.
+- Click the "Generate Product Name" button.

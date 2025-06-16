@@ -81,8 +81,9 @@ class OpenAISession(models.Model):
                 request_payload["previous_response_id"] = self.previous_response_id
             self.request_payload = json.dumps(request_payload, indent=2)
         except Exception as e:
-            raise UserError(_("Failed to compute request_payload for session %s: %s", self.name, e))
-
+            raise UserError(
+                _("Failed to compute request_payload for session %s: %s", self.name, e)
+            )
 
     @api.model
     def call_openAI(self):

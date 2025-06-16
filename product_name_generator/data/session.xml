@@ -2,8 +2,11 @@
 <odoo>
   <data noupdate="0">
 
-    <record id="openai_vision_session_product_name_creater" model="openai.vision.session">
-      <field name="name">Product Name Creater</field>
+    <record
+            id="openai_vision_session_product_name_generator"
+            model="openai.vision.session"
+        >
+      <field name="name">Product Name Generator</field>
       <field name="model">gpt-4o</field>
       <field name="temperature">1</field>
       <field name="instruction">Please create product name.</field>
