@@ -1,15 +1,14 @@
 <odoo>
-  <data>
-    <record
-            id="openai_vision_session_product_name_generator"
-            model="openai.vision.session"
-        >
-      <field name="name">Product Name Generator</field>
-      <field name="model">gpt-4o</field>
-      <field name="temperature">1</field>
-      <field name="instruction">Please create product name.</field>
-      <field name="response_format_enabled">1</field>
-      <field name="response_format_schema">
+  <record
+        id="openai_vision_session_product_name_generator"
+        model="openai.vision.session"
+    >
+    <field name="name">Product Name Generator</field>
+    <field name="model">gpt-4o</field>
+    <field name="temperature">1</field>
+    <field name="instruction">Please create product name.</field>
+    <field name="response_format_enabled">1</field>
+    <field name="response_format_schema">
         <![CDATA[
 {
   "type": "object",
@@ -21,9 +20,8 @@
   "strict": true
 }
         ]]>
-      </field>
-      <field name="web_search">1</field>
-      <field name="store_response">0</field>
-    </record>
-  </data>
+    </field>
+    <field name="web_search">1</field>
+    <field name="store_response">0</field>
+  </record>
 </odoo>
