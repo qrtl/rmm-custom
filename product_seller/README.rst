@@ -24,7 +24,7 @@ Product Seller
 
 This module does the following:
 
--  Adds the seller field to product, partner and quant models.
+- Adds the seller field to product, partner and quant models.
 
 **Table of contents**
 
