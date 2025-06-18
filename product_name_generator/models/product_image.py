@@ -32,7 +32,7 @@ class ProductImage(models.Model):
         )
         if not attachment:
             raise UserError(_("There is no attachment for this product image."))
-        input_image = f"data:{attachment.mimetype};base64,{attachment.image_1920}"
+        input_image = f"data:{attachment.mimetype};base64,{attachment.datas}"
         session = self.env.ref(
             "product_name_generator.openai_vision_session_product_name_generator"
         )
