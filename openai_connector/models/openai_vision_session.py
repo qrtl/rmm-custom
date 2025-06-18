@@ -30,11 +30,11 @@ class OpenAIVisionSession(models.Model):
     )
     instruction = fields.Text(
         help="System-level instruction for the assistant."
-        "\nExample: 'You are a helpful assistant that answers in Japanese."
+        "\nExample: You are a helpful assistant that answers in Japanese."
     )
     inputs = fields.Text()
     previous_response_id = fields.Char(string="Previous Response ID")
-    store_response = fields.Boolean(default=True)
+    store_response = fields.Boolean()
     web_search = fields.Boolean(string="Use Web Search")
     response_format_enabled = fields.Boolean(
         string="Use Structured Output (JSON Schema)"
