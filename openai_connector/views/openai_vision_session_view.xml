@@ -10,7 +10,6 @@
       </tree>
     </field>
   </record>
-
   <record id="view_openai_vision_session_form" model="ir.ui.view">
     <field name="name">openai.vision.session.form</field>
     <field name="model">openai.vision.session</field>
@@ -43,13 +42,11 @@
       </form>
     </field>
   </record>
-
   <record id="action_openai_vision_sessions" model="ir.actions.act_window">
     <field name="name">Vision Sessions</field>
     <field name="res_model">openai.vision.session</field>
     <field name="view_mode">tree,form</field>
   </record>
-
   <menuitem
         id="menu_openai_root"
         name="Vision"
@@ -57,7 +54,6 @@
         sequence="90"
         groups="base.group_system"
     />
-
   <menuitem
         id="menu_openai_vision_sessions"
         name="Vision Sessions"
@@ -65,5 +61,4 @@
         action="action_openai_vision_sessions"
         sequence="20"
     />
-
 </odoo>

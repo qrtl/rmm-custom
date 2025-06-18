@@ -1,7 +1,6 @@
 # Copyright 2025 Quartile (https://www.quartile.co)
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-import base64
 import json
 
 from odoo import _, models
@@ -33,19 +32,14 @@ class ProductImage(models.Model):
         )
         if not attachment:
             raise UserError(_("There is no attachment for this product image."))
-        image_data = base64.b64decode(attachment.datas)
-        base64_str = base64.b64encode(image_data).decode("utf-8")
-        input_image = f"data:{attachment.mimetype};base64,{base64_str}"
+        input_image = f"data:{attachment.mimetype};base64,{attachment.image_1920}"
         session = self.env.ref(
             "product_name_generator.openai_vision_session_product_name_generator"
         )
-        session.inputs = json.dumps(
-            [
-                {
-                    "role": "user",
-                    "content": [{"type": "input_image", "image_url": input_image}],
-                }
-            ],
-            indent=2,
-        )
+        session.inputs = [
+            {
+                "role": "user",
+                "content": [{"type": "input_image", "image_url": input_image}],
+            }
+        ]
         self.with_delay().call_openAI(session)

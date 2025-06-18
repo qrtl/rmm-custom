@@ -9,7 +9,7 @@ from odoo.exceptions import UserError
 _logger = logging.getLogger(__name__)
 
 
-class OpenAISession(models.Model):
+class OpenAIVisionSession(models.Model):
     _name = "openai.vision.session"
     _description = "OpenAI Vision Session"
 
@@ -21,14 +21,20 @@ class OpenAISession(models.Model):
         default="gpt-4o",
         required=True,
     )
-    temperature = fields.Float(default=0.7)
-    instruction = fields.Text()
+    temperature = fields.Float(
+        default=0.7,
+        help="Sets response randomness (0–2). Higher is more creative, lower is more focused.",
+    )
+    instruction = fields.Text(
+        help="System-level instruction for the assistant."
+        "\nExample: 'You are a helpful assistant that answers in Japanese."
+    )
     inputs = fields.Text()
     previous_response_id = fields.Char(string="Previous Response ID")
     store_response = fields.Boolean(default=True)
-    web_search = fields.Boolean(string="Use Web Search", default=False)
+    web_search = fields.Boolean(string="Use Web Search")
     response_format_enabled = fields.Boolean(
-        string="Use Structured Output (JSON Schema)", default=False
+        string="Use Structured Output (JSON Schema)"
     )
     response_format_schema = fields.Text(
         string="Response Format Schema (JSON)",
@@ -45,7 +51,7 @@ class OpenAISession(models.Model):
     )
     request_payload = fields.Text(compute="_compute_request_payload", store=False)
 
-    @api.onchange("response_format_schema")
+    @api.constrains("response_format_schema")
     def _onchange_response_format_schema(self):
         for record in self:
             if record.response_format_enabled:
@@ -57,17 +63,15 @@ class OpenAISession(models.Model):
                     ) from e
 
     def _compute_request_payload(self):
-        self.ensure_one()
         try:
             request_payload = {
                 "model": self.model,
                 "instructions": self.instruction or "",
-                "input": json.loads(self.inputs or "[]"),
+                "input": self.inputs or "[]",
                 "temperature": self.temperature,
                 "store": self.store_response,
                 "tools": [{"type": "web_search_preview"}] if self.web_search else [],
             }
-
             if self.response_format_enabled:
                 schema = json.loads(self.response_format_schema or "{}")
                 request_payload["text"] = {
@@ -94,12 +98,11 @@ class OpenAISession(models.Model):
         self.ensure_one()
         api_key = self.env.company.openai_api_key
         if not api_key:
-            raise UserError(_("OpenAI API key is not configured"))
-        client = OpenAI(api_key=api_key)
-        refusal = False
+            raise UserError(_("OpenAI API key is not configured."))
+        openai_client = OpenAI(api_key=api_key)
         try:
             payload = json.loads(self.request_payload)
-            response = client.responses.create(**payload)
+            response = openai_client.responses.create(**payload)
             if self.store_response:
                 self.previous_response_id = getattr(response, "id", False)
             refusal = getattr(response, "refusal_reason", None)
@@ -107,6 +110,5 @@ class OpenAISession(models.Model):
                 raise UserError(_("OpenAI refused the request:\n{}").format(refusal))
             output = getattr(response, "output_text", "") or ""
             return output.strip()
-
         except Exception as e:
             raise UserError(_("OpenAI error:\n{}").format(e)) from e
