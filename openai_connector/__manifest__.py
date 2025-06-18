@@ -4,7 +4,7 @@
 {
     "name": "Openai Connector",
     "version": "15.0.1.0.0",
-    "author": "Quatile",
+    "author": "Quartile",
     "license": "LGPL-3",
     "website": "https://www.quartile.co",
     "depends": ["web"],
