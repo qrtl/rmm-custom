@@ -24,7 +24,7 @@ Cancel Multiple Purchase Order
 
 This module does the following:
 
--  Allow to cancel multiple purchase orders at single click!
+- Allow to cancel multiple purchase orders at single click!
 
 **Table of contents**
 

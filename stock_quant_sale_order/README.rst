@@ -24,7 +24,7 @@ Stock Quant Sale Order
 
 This module does the following:
 
--  Create sale order for selected stock quant(s).
+- Create sale order for selected stock quant(s).
 
 **Table of contents**
 
