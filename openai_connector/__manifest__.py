@@ -7,11 +7,11 @@
     "author": "Quartile",
     "license": "LGPL-3",
     "website": "https://www.quartile.co",
-    "depends": ["web"],
+    "depends": ["base_setup"],
     "data": [
         "security/ir.model.access.csv",
-        "views/res_config_settings_views.xml",
         "views/openai_vision_session_view.xml",
+        "views/res_config_settings_views.xml",
     ],
     "external_dependencies": {
         "python": ["openai"],

@@ -33,7 +33,10 @@ class OpenAIVisionSession(models.Model):
         "\nExample: You are a helpful assistant that answers in Japanese."
     )
     inputs = fields.Text()
-    previous_response_id = fields.Char(string="Previous Response ID")
+    previous_response_id = fields.Char(
+        string="Previous Response ID",
+        help="ID of previous response to continue chat (expires in 30 days).",
+    )
     store_response = fields.Boolean()
     web_search = fields.Boolean(string="Use Web Search")
     response_format_enabled = fields.Boolean(
@@ -52,10 +55,9 @@ class OpenAIVisionSession(models.Model):
             indent=2,
         ),
     )
-    request_payload = fields.Text(compute="_compute_request_payload", store=False)
 
     @api.constrains("response_format_schema")
-    def _onchange_response_format_schema(self):
+    def _constrains_response_format_schema(self):
         for record in self:
             if record.response_format_enabled:
                 try:
@@ -65,7 +67,8 @@ class OpenAIVisionSession(models.Model):
                         _("The JSON schema is invalid:\n{}").format(e)
                     ) from e
 
-    def _compute_request_payload(self):
+    def _get_request_payload(self):
+        self.ensure_one()
         try:
             request_payload = {
                 "model": self.model,
@@ -86,7 +89,7 @@ class OpenAIVisionSession(models.Model):
                 }
             if self.previous_response_id:
                 request_payload["previous_response_id"] = self.previous_response_id
-            self.request_payload = json.dumps(request_payload, indent=2)
+            return request_payload
         except Exception as e:
             raise UserError(
                 _("Failed to compute request_payload for session %(id)s: %(error)s")
@@ -96,7 +99,6 @@ class OpenAIVisionSession(models.Model):
                 }
             ) from e
 
-    @api.model
     def call_openAI(self):
         self.ensure_one()
         api_key = self.env.company.openai_api_key
@@ -104,14 +106,14 @@ class OpenAIVisionSession(models.Model):
             raise UserError(_("OpenAI API key is not configured."))
         openai_client = OpenAI(api_key=api_key)
         try:
-            payload = json.loads(self.request_payload)
+            payload = self._get_request_payload()
             response = openai_client.responses.create(**payload)
             if self.store_response:
                 self.previous_response_id = getattr(response, "id", False)
             refusal = getattr(response, "refusal_reason", None)
             if refusal:
                 raise UserError(_("OpenAI refused the request:\n{}").format(refusal))
-            output = getattr(response, "output_text", "") or ""
+            output = getattr(response, "output_text", "")
             return output.strip()
         except Exception as e:
             raise UserError(_("OpenAI error:\n{}").format(e)) from e

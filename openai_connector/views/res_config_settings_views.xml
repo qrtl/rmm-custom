@@ -10,7 +10,11 @@
         <div class="col-12 col-lg-6 o_setting_box" id="openai_api_key_box">
           <div class="o_setting_right_pane">
             <label for="openai_api_key" />
-            <field name="openai_api_key" placeholder="Enter your OpenAI API Key here" />
+            <field
+                            name="openai_api_key"
+                            widget="password"
+                            placeholder="Enter your OpenAI API Key here"
+                        />
           </div>
         </div>
       </xpath>

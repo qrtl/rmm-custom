@@ -11,5 +11,4 @@ class ResConfigSettings(models.TransientModel):
         string="OpenAI API Key",
         related="company_id.openai_api_key",
         readonly=False,
-        password=True,
     )

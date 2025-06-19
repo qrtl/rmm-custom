@@ -21,6 +21,7 @@
             <field name="model" />
             <field name="temperature" />
             <field name="instruction" />
+            <field name="previous_response_id" />
             <field name="store_response" />
             <field name="web_search" />
             <field name="response_format_enabled" />
