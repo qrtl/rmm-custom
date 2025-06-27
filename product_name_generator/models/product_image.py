@@ -21,18 +21,8 @@ class ProductImage(models.Model):
     def action_generate_product_name(self):
         if not self.image_1920:
             raise UserError(_("Please upload the image first."))
-        attachment = self.env["ir.attachment"].search(
-            [
-                ("res_id", "=", self.id),
-                ("res_model", "=", "product.image"),
-                ("res_field", "=", "image_1920"),
-                ("mimetype", "in", IMAGE_TYPES),
-            ],
-            limit=1,
-        )
-        if not attachment:
-            raise UserError(_("There is no attachment for this product image."))
-        input_image = f"data:{attachment.mimetype};base64,{attachment.datas}"
+        base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
+        input_image = f"{base_url}/web/image/product.image/{self.id}/image_1920"
         session = self.env.ref(
             "product_name_generator.openai_vision_session_product_name_generator"
         )
