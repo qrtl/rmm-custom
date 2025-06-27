@@ -73,7 +73,7 @@ class OpenAIVisionSession(models.Model):
             request_payload = {
                 "model": self.model,
                 "instructions": self.instruction or "",
-                "input": self.inputs or "[]",
+                "input": json.loads(self.inputs) or [],
                 "temperature": self.temperature,
                 "store": self.store_response,
                 "tools": [{"type": "web_search_preview"}] if self.web_search else [],

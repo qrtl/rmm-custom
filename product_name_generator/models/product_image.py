@@ -36,10 +36,10 @@ class ProductImage(models.Model):
         session = self.env.ref(
             "product_name_generator.openai_vision_session_product_name_generator"
         )
-        session.inputs = [
+        session.inputs = json.dumps([
             {
                 "role": "user",
                 "content": [{"type": "input_image", "image_url": input_image}],
             }
-        ]
+        ])
         self.with_delay().call_openAI(session)
