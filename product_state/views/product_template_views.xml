@@ -10,6 +10,11 @@
                     <field name="product_state_id" widget="selection" />
                 </group>
             </xpath>
+            <xpath expr="//page[@name='sales']/group" position="inside">
+                <group string="Product State">
+                    <field name="product_state_id" widget="selection" />
+                </group>
+            </xpath>
         </field>
     </record>
     <record id="product_template_tree_view" model="ir.ui.view">
