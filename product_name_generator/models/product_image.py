@@ -21,15 +21,17 @@ class ProductImage(models.Model):
     def action_generate_product_name(self):
         if not self.image_1920:
             raise UserError(_("Please upload the image first."))
-        base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
+        base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
         input_image = f"{base_url}/web/image/product.image/{self.id}/image_1920"
         session = self.env.ref(
             "product_name_generator.openai_vision_session_product_name_generator"
         )
-        session.inputs = json.dumps([
-            {
-                "role": "user",
-                "content": [{"type": "input_image", "image_url": input_image}],
-            }
-        ])
+        session.inputs = json.dumps(
+            [
+                {
+                    "role": "user",
+                    "content": [{"type": "input_image", "image_url": input_image}],
+                }
+            ]
+        )
         self.with_delay().call_openAI(session)
