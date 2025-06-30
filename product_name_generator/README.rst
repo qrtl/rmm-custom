@@ -39,9 +39,9 @@ to the configuration steps outlined in this module.
 Usage
 =====
 
-- Go to the Product form.
-- Click on one of the Extra Product Media items.
-- Click the "Generate Product Name" button.
+-  Go to the Product form.
+-  Click on one of the Extra Product Media items.
+-  Click the "Generate Product Name" button.
 
 Bug Tracker
 ===========

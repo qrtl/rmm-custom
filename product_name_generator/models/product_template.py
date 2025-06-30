@@ -3,14 +3,14 @@
 
 import json
 
-from odoo import _, models
+from odoo import _, fields, models
 from odoo.exceptions import UserError
 
-IMAGE_TYPES = ["image/png", "image/jpeg", "image/bmp", "image/tiff"]
 
+class ProductTemplate(models.Model):
+    _inherit = "product.template"
 
-class ProductImage(models.Model):
-    _inherit = "product.image"
+    openai_generated_name = fields.Char()
 
     def call_openAI(self, session):
         response_json_str = session.call_openAI()
@@ -22,7 +22,7 @@ class ProductImage(models.Model):
         if not self.image_1920:
             raise UserError(_("Please upload the image first."))
         base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
-        input_image = f"{base_url}/web/image/product.image/{self.id}/image_1920"
+        input_image = f"{base_url}/web/image/{self._name}/{self.id}/image_1920"
         session = self.env.ref(
             "product_name_generator.openai_vision_session_product_name_generator"
         )

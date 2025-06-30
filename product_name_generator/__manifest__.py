@@ -10,7 +10,7 @@
     "depends": ["website_sale", "queue_job", "openai_connector"],
     "data": [
         "data/session.xml",
-        "views/product_image_views.xml",
+        "views/product_template_views.xml",
     ],
     "installable": True,
 }
