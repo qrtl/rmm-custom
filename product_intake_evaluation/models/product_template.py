@@ -9,7 +9,9 @@ class ProductTemplate(models.Model):
     _inherit = "product.template"
 
     def _get_default_status_id(self):
-        return self.env["valuation.status"].search([], limit=1) or False
+        if self.env.user.has_group("product_intake_evaluation.group_intake_evaluation_user"):
+            return self.env["valuation.status"].search([], limit=1) or False
+        return False
 
     valuation_status_id = fields.Many2one(
         "valuation.status",

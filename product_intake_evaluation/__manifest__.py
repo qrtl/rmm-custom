@@ -8,6 +8,7 @@
     "website": "https://www.quartile.co",
     "license": "AGPL-3",
     "depends": [
+        # "mail",
         "purchase_stock",
         "product_state",
         "base_group_backend",
