@@ -12,20 +12,9 @@ class ProductTemplate(models.Model):
 
     openai_generated_name = fields.Char()
 
-    def call_openAI(self, session):
-        response_json_str = session.call_openAI()
-        response_json = json.loads(response_json_str)
-        product_name = response_json.get("product_name")
-        self.with_context(lang="ja_JP").product_tmpl_id.name = product_name
-
-    def action_generate_product_name(self):
-        if not self.image_1920:
-            raise UserError(_("Please upload the image first."))
+    def call_openAI(self, session, is_published):
         base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
         input_image = f"{base_url}/web/image/{self._name}/{self.id}/image_1920"
-        session = self.env.ref(
-            "product_name_generator.openai_vision_session_product_name_generator"
-        )
         session.inputs = json.dumps(
             [
                 {
@@ -34,4 +23,21 @@ class ProductTemplate(models.Model):
                 }
             ]
         )
-        self.with_delay().call_openAI(session)
+        response_json_str = session.call_openAI()
+        response_json = json.loads(response_json_str)
+        product_name = response_json.get("product_name")
+        self.with_context(lang="ja_JP").openai_generated_name = product_name
+        self.is_published = is_published
+
+    def action_generate_product_name(self):
+        session = self.env.ref(
+            "product_name_generator.openai_vision_session_product_name_generator"
+        )
+        for rec in self:
+            if not rec.image_1920:
+                raise UserError(_("Please upload the image first."))
+            is_published = rec.is_published
+            if not is_published:
+                # Need to be published to be accessible to the public.
+                rec.is_published = True
+            rec.with_delay().call_openAI(session, is_published)
