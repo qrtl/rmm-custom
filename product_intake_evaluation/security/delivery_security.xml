@@ -54,26 +54,6 @@
             eval="[Command.link(ref('product_intake_evaluation.group_intake_evaluation_manager'))]"
         />
     </record>
-    <record id="intake_evaluation_user_partner_rule" model="ir.rule">
-        <field name="name">res.parnter Intake Evaluation User</field>
-        <field name="model_id" ref="product.model_res_partner" />
-        <field
-            name="domain_force"
-        >['|',('id','=',2),('commercial_partner_id','=',user.commercial_partner_id.id)]</field>
-        <field
-            name="groups"
-            eval="[Command.link(ref('product_intake_evaluation.group_intake_evaluation_user'))]"
-        />
-    </record>
-    <record id="intake_evaluation_manager_partner_rule" model="ir.rule">
-        <field name="name">res.partner Intake Evaluation Manager</field>
-        <field name="model_id" ref="product.model_res_partner" />
-        <field name="domain_force">[('is_intake_evaluation_branch','!=',False)]</field>
-        <field
-            name="groups"
-            eval="[Command.link(ref('product_intake_evaluation.group_intake_evaluation_manager'))]"
-        />
-    </record>
     <!-- <record id="intake_evaluation_user_message_rule" model="ir.rule">
         <field name="name">mail.message Intake Evaluation User</field>
         <field name="model_id" ref="mail.model_mail_message" />

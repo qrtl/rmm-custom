@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-13 07:21+0000\n"
-"PO-Revision-Date: 2025-06-13 07:21+0000\n"
+"POT-Creation-Date: 2025-07-02 06:01+0000\n"
+"PO-Revision-Date: 2025-07-02 06:01+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,6 +19,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:product_intake_evaluation.board_intake_evaluation_dash_view
 msgid "<i class=\"fa fa-archive fa-6x\" title=\"Products\"/>"
 msgstr ""
+
+#. module: product_intake_evaluation
+#: model_terms:ir.ui.view,arch_db:product_intake_evaluation.product_template_intake_evaluation_form_view
+msgid "Add a Media"
+msgstr "画像を追加"
 
 #. module: product_intake_evaluation
 #: model_terms:ir.ui.view,arch_db:product_intake_evaluation.product_template_form_view
@@ -65,6 +70,11 @@ msgstr "作成日"
 #: model:ir.model.fields,field_description:product_intake_evaluation.field_valuation_status__display_name
 msgid "Display Name"
 msgstr "表示名"
+
+#. module: product_intake_evaluation
+#: model_terms:ir.ui.view,arch_db:product_intake_evaluation.product_template_intake_evaluation_form_view
+msgid "Extra Product Media"
+msgstr "追加プロダクトメディア"
 
 #. module: product_intake_evaluation
 #: model_terms:ir.ui.view,arch_db:product_intake_evaluation.product_template_intake_evaluation_search_view
@@ -152,6 +162,11 @@ msgstr "非表示にされたプロダクト"
 
 #. module: product_intake_evaluation
 #: model_terms:ir.ui.view,arch_db:product_intake_evaluation.product_template_intake_evaluation_form_view
+msgid "Product Image"
+msgstr "プロダクト画像"
+
+#. module: product_intake_evaluation
+#: model_terms:ir.ui.view,arch_db:product_intake_evaluation.product_template_intake_evaluation_form_view
 #: model_terms:ir.ui.view,arch_db:product_intake_evaluation.product_template_intake_evaluation_tree_view
 msgid "Product Name"
 msgstr "プロダクト名"
@@ -223,14 +238,9 @@ msgstr "査定ステータス"
 #: code:addons/product_intake_evaluation/models/product_template.py:0
 #, python-format
 msgid "You do not have permission to modify the valuation status."
-msgstr ""
+msgstr "あなたは査定ステータスを更新できません。"
 
 #. module: product_intake_evaluation
 #: model_terms:ir.ui.view,arch_db:product_intake_evaluation.product_template_intake_evaluation_form_view
 msgid "e.g. Cheese Burger"
 msgstr "例: iPhone 16"
-
-#. module: product_intake_evaluation
-#: model_terms:ir.actions.act_window,help:product_intake_evaluation.action_product_template_intake_evaluation_view
-msgid "新しいプロダクトを作成しましょう"
-msgstr ""

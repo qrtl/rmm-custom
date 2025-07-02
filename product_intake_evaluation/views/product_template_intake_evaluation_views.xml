@@ -40,7 +40,10 @@
                         >
                             <group>
                                 <group>
-                                    <field name="product_state_id" options="{'no_open': True}" />
+                                    <field
+                                        name="product_state_id"
+                                        options="{'no_open': True}"
+                                    />
                                     <field name="create_date" readonly="1" />
                                     <field name="create_uid" readonly="1" />
                                     <field name="write_date" readonly="1" />
@@ -49,11 +52,7 @@
                                     <field name="qty_available" readonly="1" />
                                 </group>
                                 <group>
-                                    <field
-                                        name="assigned_branch_id"
-                                        domain="[('is_intake_evaluation_branch', '=', True)]"
-                                        options="{'no_open': True}"
-                                    />
+                                    <field name="assigned_branch_id" readonly="1" />
                                     <field name="carrier_contact_person" />
                                     <field name="tracking_no_1" />
                                     <field name="tracking_no_2" />
@@ -62,10 +61,20 @@
                             </group>
                         </page>
                         <page string="Product Image" name="product_image">
-                            <group name="product_template_images" string="Extra Product Media">
-                                <field name="product_template_image_ids" class="o_website_sale_image_list" context="{'default_name': name}" mode="kanban" add-label="Add a Media" nolabel="1"/>
+                            <group
+                                name="product_template_images"
+                                string="Extra Product Media"
+                            >
+                                <field
+                                    name="product_template_image_ids"
+                                    class="o_website_sale_image_list"
+                                    context="{'default_name': name}"
+                                    mode="kanban"
+                                    add-label="Add a Media"
+                                    nolabel="1"
+                                />
                             </group>
-                        </page>    
+                        </page>
                     </notebook>
                 </sheet>
                 <!-- <div class="oe_chatter">
@@ -89,6 +98,7 @@
                     options="{'preview_image': 'image_128'}"
                     optional="show"
                 />
+                <field name="barcode" optional="show" />
                 <field name="product_state_id" optional="show" />
                 <field name="create_uid" optional="show" />
                 <field name="create_date" widget="date" optional="show" />
@@ -110,6 +120,7 @@
         <field name="arch" type="xml">
             <search string="Search Intake Evaluation Products">
                 <field name="name" />
+                <field name="barcode" />
                 <field name="product_state_id" />
                 <field name="valuation_status_id" />
                 <field name="assigned_branch_id" />
@@ -148,7 +159,9 @@
         <field name="name">Products</field>
         <field name="res_model">product.template</field>
         <field name="view_mode">tree,form</field>
-        <field name="context">{'update_branch': 1,'form_view_ref':'product_intake_evaluation.product_template_intake_evaluation_form_view'}</field>
+        <field
+            name="context"
+        >{'update_branch': 1,'form_view_ref':'product_intake_evaluation.product_template_intake_evaluation_form_view'}</field>
         <field name="view_id" ref="product_template_intake_evaluation_tree_view" />
         <field
             name="search_view_id"
