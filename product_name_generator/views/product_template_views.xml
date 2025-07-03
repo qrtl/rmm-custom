@@ -7,7 +7,7 @@
             <xpath expr="//div[contains(@class, 'oe_title')]" position="after">
                 <div class="col-4">
                     <label for="openai_generated_name" string="OpenAI Generated Name" />
-                    <field name="openai_generated_name" readonly="1"/>
+                    <field name="openai_generated_name" readonly="1" />
                 </div>
             </xpath>
         </field>
