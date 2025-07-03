@@ -32,7 +32,6 @@ class OpenAIVisionSession(models.Model):
         help="System-level instruction for the assistant."
         "\nExample: You are a helpful assistant that answers in Japanese."
     )
-    inputs = fields.Text()
     previous_response_id = fields.Char(
         string="Previous Response ID",
         help="ID of previous response to continue chat (expires in 30 days).",
@@ -59,21 +58,18 @@ class OpenAIVisionSession(models.Model):
     @api.constrains("response_format_schema")
     def _constrains_response_format_schema(self):
         for record in self:
-            if record.response_format_enabled:
-                try:
-                    json.loads(record.response_format_schema or "{}")
-                except json.JSONDecodeError as e:
-                    raise UserError(
-                        _("The JSON schema is invalid:\n{}").format(e)
-                    ) from e
+            try:
+                json.loads(record.response_format_schema or "{}")
+            except json.JSONDecodeError as e:
+                raise UserError(_("The JSON schema is invalid:\n{}").format(e)) from e
 
-    def _get_request_payload(self):
+    def _get_request_payload(self, input_datas):
         self.ensure_one()
         try:
             request_payload = {
                 "model": self.model,
                 "instructions": self.instruction or "",
-                "input": json.loads(self.inputs) or [],
+                "input": json.loads(input_datas) or [],
                 "temperature": self.temperature,
                 "store": self.store_response,
                 "tools": [{"type": "web_search_preview"}] if self.web_search else [],
@@ -99,14 +95,14 @@ class OpenAIVisionSession(models.Model):
                 }
             ) from e
 
-    def call_openAI(self):
+    def call_openAI(self, input_datas):
         self.ensure_one()
         api_key = self.env.company.openai_api_key
         if not api_key:
             raise UserError(_("OpenAI API key is not configured."))
         openai_client = OpenAI(api_key=api_key)
         try:
-            payload = self._get_request_payload()
+            payload = self._get_request_payload(input_datas)
             response = openai_client.responses.create(**payload)
             if self.store_response:
                 self.previous_response_id = getattr(response, "id", False)

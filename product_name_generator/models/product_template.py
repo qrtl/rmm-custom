@@ -12,10 +12,10 @@ class ProductTemplate(models.Model):
 
     openai_generated_name = fields.Char()
 
-    def call_openAI(self, session, is_published):
+    def generate_name(self, session, is_published):
         base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
         input_image = f"{base_url}/web/image/{self._name}/{self.id}/image_1920"
-        session.inputs = json.dumps(
+        input_datas = json.dumps(
             [
                 {
                     "role": "user",
@@ -23,10 +23,10 @@ class ProductTemplate(models.Model):
                 }
             ]
         )
-        response_json_str = session.call_openAI()
+        response_json_str = session.call_openAI(input_datas)
         response_json = json.loads(response_json_str)
         product_name = response_json.get("product_name")
-        self.with_context(lang="ja_JP").openai_generated_name = product_name
+        self.openai_generated_name = product_name
         self.is_published = is_published
 
     def action_generate_product_name(self):
@@ -40,4 +40,4 @@ class ProductTemplate(models.Model):
             if not is_published:
                 # Need to be published to be accessible to the public.
                 rec.is_published = True
-            rec.with_delay().call_openAI(session, is_published)
+            rec.with_delay().generate_name(session, is_published)
