@@ -24,7 +24,7 @@ Purchase Order Tags
 
 This module does the following:
 
-- Add tag field to purchase order.
+-  Add tag field to purchase order.
 
 **Table of contents**
 

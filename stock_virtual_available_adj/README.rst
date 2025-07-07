@@ -24,8 +24,8 @@ Stock Virtual Available Adjust
 
 This module does the following:
 
-- Deduct quantities of unconfirmed sales orders from forcasted quantity
-  calculation.
+-  Deduct quantities of unconfirmed sales orders from forcasted quantity
+   calculation.
 
 **Table of contents**
 
