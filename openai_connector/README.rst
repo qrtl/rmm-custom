@@ -28,12 +28,7 @@ multimodal input (images and text), optional web search, and structured
 output via JSON Schema.
 
 The module is designed as a backend service and is intended to be
-invoked by other modules. Requests can be triggered using the method
-call_openai(). When store_response is enabled, the session retains the
-previous_response_id to support continuation of conversations.
-
-It is advised to delegate execution to background job queues (e.g.,
-queue.job) for asynchronous and fault-tolerant processing.
+invoked by other modules.
 
 **Table of contents**
 
@@ -52,8 +47,38 @@ The official Python SDK from OpenAI is required. Install it using:
 
    pip install openai
 
+Configuration in Odoo
+
+- Set your OpenAI API key in Company Settings in Odoo.
+- Settings > Technical Settings > OpenAI Vision Sessions. Adjust
+  parameters such as model, temperature, instructions, and response
+  schema as needed.
+
 For additional options and usage details, refer to the official
 documentation: https://platform.openai.com/docs
+
+Usage
+=====
+
+| This module is intended to be used programmatically by other Odoo
+  modules.
+| You create and configure ``openai.vision.session`` records and call
+  the method ``call_openai()`` from your own business logic.
+
+For example, a product name generator module may call this module's
+session as follows:
+
+.. code:: python
+
+   session = env.ref('product_name_generator.openai_vision_session_product_name_generator')
+   input_image = f"{base_url}/web/image/{self._name}/{self.id}/image_1920"
+   input_data = json.dumps([
+       {"role": "user", "content": [{"type": "input_image", "image_url": image_url}]}
+   ])
+   response = session.call_openai(input_data)
+
+It is advised to delegate execution to background job queues (e.g.,
+queue.job) for asynchronous and fault-tolerant processing.
 
 Bug Tracker
 ===========

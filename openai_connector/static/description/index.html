@@ -374,19 +374,16 @@ access to OpenAI’s GPT-4o model using structured payloads. It supports
 multimodal input (images and text), optional web search, and structured
 output via JSON Schema.</p>
 <p>The module is designed as a backend service and is intended to be
-invoked by other modules. Requests can be triggered using the method
-call_openai(). When store_response is enabled, the session retains the
-previous_response_id to support continuation of conversations.</p>
-<p>It is advised to delegate execution to background job queues (e.g.,
-queue.job) for asynchronous and fault-tolerant processing.</p>
+invoked by other modules.</p>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
 <li><a class="reference internal" href="#configuration" id="toc-entry-1">Configuration</a></li>
-<li><a class="reference internal" href="#bug-tracker" id="toc-entry-2">Bug Tracker</a></li>
-<li><a class="reference internal" href="#credits" id="toc-entry-3">Credits</a><ul>
-<li><a class="reference internal" href="#authors" id="toc-entry-4">Authors</a></li>
-<li><a class="reference internal" href="#maintainers" id="toc-entry-5">Maintainers</a></li>
+<li><a class="reference internal" href="#usage" id="toc-entry-2">Usage</a></li>
+<li><a class="reference internal" href="#bug-tracker" id="toc-entry-3">Bug Tracker</a></li>
+<li><a class="reference internal" href="#credits" id="toc-entry-4">Credits</a><ul>
+<li><a class="reference internal" href="#authors" id="toc-entry-5">Authors</a></li>
+<li><a class="reference internal" href="#maintainers" id="toc-entry-6">Maintainers</a></li>
 </ul>
 </li>
 </ul>
@@ -399,11 +396,39 @@ settings in Odoo.</p>
 <pre class="code bash literal-block">
 pip<span class="w"> </span>install<span class="w"> </span>openai
 </pre>
+<p>Configuration in Odoo</p>
+<ul class="simple">
+<li>Set your OpenAI API key in Company Settings in Odoo.</li>
+<li>Settings &gt; Technical Settings &gt; OpenAI Vision Sessions. Adjust
+parameters such as model, temperature, instructions, and response
+schema as needed.</li>
+</ul>
 <p>For additional options and usage details, refer to the official
 documentation: <a class="reference external" href="https://platform.openai.com/docs">https://platform.openai.com/docs</a></p>
 </div>
+<div class="section" id="usage">
+<h1><a class="toc-backref" href="#toc-entry-2">Usage</a></h1>
+<div class="line-block">
+<div class="line">This module is intended to be used programmatically by other Odoo
+modules.</div>
+<div class="line">You create and configure <tt class="docutils literal">openai.vision.session</tt> records and call
+the method <tt class="docutils literal">call_openai()</tt> from your own business logic.</div>
+</div>
+<p>For example, a product name generator module may call this module’s
+session as follows:</p>
+<pre class="code python literal-block">
+<span class="n">session</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">'product_name_generator.openai_vision_session_product_name_generator'</span><span class="p">)</span><span class="w">
+</span><span class="n">input_image</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/web/image/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">/image_1920&quot;</span><span class="w">
+</span><span class="n">input_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">([</span><span class="w">
+</span>    <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;input_image&quot;</span><span class="p">,</span> <span class="s2">&quot;image_url&quot;</span><span class="p">:</span> <span class="n">image_url</span><span class="p">}]}</span><span class="w">
+</span><span class="p">])</span><span class="w">
+</span><span class="n">response</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">call_openai</span><span class="p">(</span><span class="n">input_data</span><span class="p">)</span>
+</pre>
+<p>It is advised to delegate execution to background job queues (e.g.,
+queue.job) for asynchronous and fault-tolerant processing.</p>
+</div>
 <div class="section" id="bug-tracker">
-<h1><a class="toc-backref" href="#toc-entry-2">Bug Tracker</a></h1>
+<h1><a class="toc-backref" href="#toc-entry-3">Bug Tracker</a></h1>
 <p>Bugs are tracked on <a class="reference external" href="https://github.com/qrtl/rmm-custom/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
@@ -411,15 +436,15 @@ If you spotted it first, help us to smash it by providing a detailed and welcome
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
-<h1><a class="toc-backref" href="#toc-entry-3">Credits</a></h1>
+<h1><a class="toc-backref" href="#toc-entry-4">Credits</a></h1>
 <div class="section" id="authors">
-<h2><a class="toc-backref" href="#toc-entry-4">Authors</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-5">Authors</a></h2>
 <ul class="simple">
 <li>Quartile</li>
 </ul>
 </div>
 <div class="section" id="maintainers">
-<h2><a class="toc-backref" href="#toc-entry-5">Maintainers</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-6">Maintainers</a></h2>
 <p>This module is part of the <a class="reference external" href="https://github.com/qrtl/rmm-custom/tree/15.0/openai_connector">qrtl/rmm-custom</a> project on GitHub.</p>
 <p>You are welcome to contribute.</p>
 </div>
