@@ -29,7 +29,7 @@ output via JSON Schema.
 
 The module is designed as a backend service and is intended to be
 invoked by other modules. Requests can be triggered using the method
-call_openAI(). When store_response is enabled, the session retains the
+call_openai(). When store_response is enabled, the session retains the
 previous_response_id to support continuation of conversations.
 
 It is advised to delegate execution to background job queues (e.g.,

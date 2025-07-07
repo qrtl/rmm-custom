@@ -18,9 +18,7 @@ class OpenAIVisionSession(models.Model):
 
     name = fields.Char(required=True)
     model = fields.Selection(
-        [
-            ("gpt-4o", "GPT-4o"),
-        ],
+        [("gpt-4o", "GPT-4o")],
         default="gpt-4o",
         required=True,
     )
@@ -89,13 +87,10 @@ class OpenAIVisionSession(models.Model):
         except Exception as e:
             raise UserError(
                 _("Failed to compute request_payload for session %(id)s: %(error)s")
-                % {
-                    "id": self.id,
-                    "error": e,
-                }
+                % {"id": self.id, "error": e}
             ) from e
 
-    def call_openAI(self, input_datas):
+    def call_openai(self, input_datas):
         self.ensure_one()
         api_key = self.env.company.openai_api_key
         if not api_key:
