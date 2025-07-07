@@ -24,7 +24,7 @@ Report Account Move with Settlement
 
 This module does the following:
 
-- Adds settlement report print function to account.move
+-  Adds settlement report print function to account.move
 
 The added function is intended to be used by auction sellers so that
 they can keep the details of the settlement invoice for their record.
@@ -39,9 +39,9 @@ Configuration
 
 Update following fields in the company.
 
-- Seller Settlement Report Title
-- Seller Settlement Report Debit Comment
-- Seller Settlement Report Credit Comment
+-  Seller Settlement Report Title
+-  Seller Settlement Report Debit Comment
+-  Seller Settlement Report Credit Comment
 
 Bug Tracker
 ===========

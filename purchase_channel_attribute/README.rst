@@ -24,8 +24,8 @@ Purchase Channel Attribute
 
 This module does the following:
 
-- Adds some fields to purchase.order to record the purchase particulars
-  required
+-  Adds some fields to purchase.order to record the purchase particulars
+   required
 
 **Table of contents**
 

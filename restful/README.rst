@@ -39,8 +39,8 @@ Usage
 AUTHENTICATION
 --------------
 
-- login
-- logout
+-  login
+-  logout
 
 Before you can make use of this module, an access token is required for
 all requests except for the authentication endpoints.

@@ -24,8 +24,8 @@ Product Prep State
 
 This module does the following:
 
-- Adds prep_state_id field to product.template to manage the state of
-  product preparation.
+-  Adds prep_state_id field to product.template to manage the state of
+   product preparation.
 
 **Table of contents**
 

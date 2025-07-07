@@ -24,7 +24,7 @@ Products' Yahoo Auction information
 
 This module does the following:
 
-- Added fields to hold " "information from Yahoo Auctions to product
+-  Added fields to hold " "information from Yahoo Auctions to product
 
 **Table of contents**
 

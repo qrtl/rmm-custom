@@ -24,7 +24,7 @@ Product Auction
 
 This module does the following:
 
-- Adds auction related fields to product.template model.
+-  Adds auction related fields to product.template model.
 
 **Table of contents**
 
