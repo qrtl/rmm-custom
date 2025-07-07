@@ -1,5 +1,5 @@
 # Copyright 2025 Quartile (https://www.quartile.co)
-# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 import json
 
@@ -12,8 +12,7 @@ class ProductTemplate(models.Model):
 
     openai_generated_name = fields.Char()
 
-    def generate_name(self, session, is_published):
-        base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
+    def generate_name(self, session, base_url, is_published):
         input_image = f"{base_url}/web/image/{self._name}/{self.id}/image_1920"
         input_datas = json.dumps(
             [
@@ -23,7 +22,7 @@ class ProductTemplate(models.Model):
                 }
             ]
         )
-        response_json_str = session.call_openAI(input_datas)
+        response_json_str = session.call_openai(input_datas)
         response_json = json.loads(response_json_str)
         product_name = response_json.get("product_name")
         self.openai_generated_name = product_name
@@ -33,6 +32,7 @@ class ProductTemplate(models.Model):
         session = self.env.ref(
             "product_name_generator.openai_vision_session_product_name_generator"
         )
+        base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
         for rec in self:
             if not rec.image_1920:
                 raise UserError(_("Please upload the image first."))
@@ -40,4 +40,4 @@ class ProductTemplate(models.Model):
             if not is_published:
                 # Need to be published to be accessible to the public.
                 rec.is_published = True
-            rec.with_delay().generate_name(session, is_published)
+            rec.with_delay().generate_name(session, base_url, is_published)
