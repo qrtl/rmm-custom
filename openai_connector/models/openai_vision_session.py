@@ -4,7 +4,7 @@
 import json
 import logging
 
-from openai import OpenAI
+import requests
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
@@ -92,19 +92,19 @@ class OpenAIVisionSession(models.Model):
 
     def call_openai(self, input_datas):
         self.ensure_one()
-        api_key = self.env.company.openai_api_key
-        if not api_key:
-            raise UserError(_("OpenAI API key is not configured."))
-        openai_client = OpenAI(api_key=api_key)
+        backend = self.env['webservice.backend'].search([('name', '=', 'OpenAI Responses API')], limit=1)
+        if not backend:
+            raise UserError(_("Webservice backend for OpenAI Vision is not configured."))
+        payload = self._get_request_payload(input_datas)
         try:
-            payload = self._get_request_payload(input_datas)
-            response = openai_client.responses.create(**payload)
-            if self.store_response:
-                self.previous_response_id = getattr(response, "id", False)
-            refusal = getattr(response, "refusal_reason", None)
+            response_content = backend.call('post', url=backend.url + '/v1/responses', json=payload)
+            response_json = json.loads(response_content)
+            refusal = getattr(response_json, "refusal_reason", None)
             if refusal:
                 raise UserError(_("OpenAI refused the request:\n{}").format(refusal))
-            output = getattr(response, "output_text", "")
+            if self.store_response:
+                self.previous_response_id = getattr(response_json, "id", False)
+            output = getattr(response_json, "output_text", "")
             return output.strip()
         except Exception as e:
             raise UserError(_("OpenAI error:\n{}").format(e)) from e
