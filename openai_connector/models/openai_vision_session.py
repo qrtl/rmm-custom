@@ -97,14 +97,17 @@ class OpenAIVisionSession(models.Model):
             raise UserError(_("Webservice backend for OpenAI Vision is not configured."))
         payload = self._get_request_payload(input_datas)
         try:
-            response_content = backend.call('post', url=backend.url + '/v1/responses', json=payload)
-            response_json = json.loads(response_content)
-            refusal = getattr(response_json, "refusal_reason", None)
+            response_bytes  = backend.call('post', url=backend.url + '/v1/responses', json=payload)
+            response_json = json.loads(response_bytes.decode("utf-8"))
+            refusal = response_json.get("refusal_reason")
             if refusal:
                 raise UserError(_("OpenAI refused the request:\n{}").format(refusal))
             if self.store_response:
-                self.previous_response_id = getattr(response_json, "id", False)
-            output = getattr(response_json, "output_text", "")
-            return output.strip()
+                self.previous_response_id = response_json.get("id")
+            output = response_json.get("output", [])
+            contents = []
+            for item in output:
+                contents.extend(item.get("content", []))
+            return contents[0].get("text")
         except Exception as e:
             raise UserError(_("OpenAI error:\n{}").format(e)) from e
