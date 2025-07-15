@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="custom_filter_groupby_access" model="res.groups">
+        <field name="name">Custom Filter and Group By Access</field>
+        <field name="category_id" ref="base.module_category_hidden" />
+    </record>
+    <record id="base.group_user" model="res.groups">
+        <field
+            name="implied_ids"
+            eval="[(4, ref('custom_filter_groupby_visibility_control.custom_filter_groupby_access'))]"
+        />
+    </record>
+</odoo>
