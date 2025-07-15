@@ -390,19 +390,15 @@ invoked by other modules.</p>
 </div>
 <div class="section" id="configuration">
 <h1><a class="toc-backref" href="#toc-entry-1">Configuration</a></h1>
-<p>To use this module, configure the OpenAI API key under the Company
-settings in Odoo.</p>
-<p>The official Python SDK from OpenAI is required. Install it using:</p>
-<pre class="code bash literal-block">
-pip<span class="w"> </span>install<span class="w"> </span>openai
-</pre>
-<p>Configuration in Odoo</p>
+<p>Set the value of code to ‘openai’ in your API configuration.</p>
+<p>To adjust the OpenAI session attributes based on your needs:</p>
 <ul class="simple">
-<li>Set your OpenAI API key in Company Settings in Odoo.</li>
-<li>Settings &gt; Technical Settings &gt; OpenAI Vision Sessions. Adjust
+<li>Go to Settings &gt; Technical Settings &gt; OpenAI Vision Sessions. Adjust
 parameters such as model, temperature, instructions, and response
 schema as needed.</li>
 </ul>
+<p>This module depends on the ‘base_api_connection’. Therefore, please
+adhere to the configuration steps outlined in this module.</p>
 <p>For additional options and usage details, refer to the official
 documentation: <a class="reference external" href="https://platform.openai.com/docs">https://platform.openai.com/docs</a></p>
 </div>
