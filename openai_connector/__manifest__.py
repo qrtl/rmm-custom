@@ -9,7 +9,7 @@
     "website": "https://www.quartile.co",
     "depends": ["base_setup", "webservice"],
     "data": [
-		"data/webservice_backend_openai_responses_api.xml",
+        "data/webservice_backend_openai_responses_api.xml",
         "security/ir.model.access.csv",
         "views/openai_vision_session_views.xml",
         "views/res_config_settings_views.xml",

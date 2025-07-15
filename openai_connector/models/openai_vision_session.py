@@ -4,8 +4,6 @@
 import json
 import logging
 
-import requests
-
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
@@ -92,12 +90,18 @@ class OpenAIVisionSession(models.Model):
 
     def call_openai(self, input_datas):
         self.ensure_one()
-        backend = self.env['webservice.backend'].search([('name', '=', 'OpenAI Responses API')], limit=1)
+        backend = self.env["webservice.backend"].search(
+            [("name", "=", "OpenAI Responses API")], limit=1
+        )
         if not backend:
-            raise UserError(_("Webservice backend for OpenAI Vision is not configured."))
+            raise UserError(
+                _("Webservice backend for OpenAI Vision is not configured.")
+            )
         payload = self._get_request_payload(input_datas)
         try:
-            response_bytes  = backend.call('post', url=backend.url + '/v1/responses', json=payload)
+            response_bytes = backend.call(
+                "post", url=backend.url + "/v1/responses", json=payload
+            )
             response_json = json.loads(response_bytes.decode("utf-8"))
             refusal = response_json.get("refusal_reason")
             if refusal:
