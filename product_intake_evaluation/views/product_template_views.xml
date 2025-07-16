@@ -36,4 +36,20 @@
             </xpath>
         </field>
     </record>
+    <record id="product_template_tree_view" model="ir.ui.view">
+        <field name="name">product.template.product.tree</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='qty_available']" position="before">
+                <field name="valuation_status_id" optional="show" />
+                <field
+                    name="assigned_branch_id"
+                    domain="[('is_intake_evaluation_branch', '=', True)]"
+                    optional="show"
+                />
+                <field name="valuation_comment" />
+            </xpath>
+        </field>
+    </record>
 </odoo>
