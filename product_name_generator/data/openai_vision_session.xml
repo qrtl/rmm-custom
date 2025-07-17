@@ -1,4 +1,4 @@
-<odoo>
+<odoo noupdate="1">
   <record
         id="openai_vision_session_product_name_generator"
         model="openai.vision.session"

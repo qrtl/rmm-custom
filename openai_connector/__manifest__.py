@@ -9,6 +9,7 @@
     "website": "https://www.quartile.co",
     "depends": ["base_api_connection"],
     "data": [
+        "data/base_api_connection.xml",
         "security/ir.model.access.csv",
         "views/openai_vision_session_views.xml",
     ],

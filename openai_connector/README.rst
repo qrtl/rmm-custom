@@ -23,9 +23,8 @@ Openai Connector
 |badge1| |badge2| |badge3|
 
 This module defines openai.vision.session, which enables programmatic
-access to OpenAI’s GPT-4o model using structured payloads. It supports
-multimodal input (images and text), optional web search, and structured
-output via JSON Schema.
+access to OpenAI’. It supports multimodal input (images and text),
+optional web search, and structured output via JSON Schema.
 
 The module is designed as a backend service and is intended to be
 invoked by other modules.
@@ -40,14 +39,14 @@ Configuration
 
 Set the value of code to 'openai' in your API configuration.
 
-To adjust the OpenAI session attributes based on your needs:
-
--  Go to Settings > Technical Settings > OpenAI Vision Sessions. Adjust
-   parameters such as model, temperature, instructions, and response
-   schema as needed.
-
 This module depends on the 'base_api_connection'. Therefore, please
-adhere to the configuration steps outlined in this module.
+follow the configuration steps outlined in that module. In particular,
+for the OpenAI API Configuration, set the api_key in the format: Bearer
+APIKEY
+
+Basically, The OpenAI session should be added by a specific module that
+depends on this one. To adjust the session attributes, go to Settings →
+Technical →OpenAI Vision Sessions.
 
 For additional options and usage details, refer to the official
 documentation: https://platform.openai.com/docs
@@ -55,10 +54,9 @@ documentation: https://platform.openai.com/docs
 Usage
 =====
 
-| This module is intended to be used programmatically by other Odoo
-  modules.
-| You create and configure ``openai.vision.session`` records and call
-  the method ``call_openai()`` from your own business logic.
+This module is intended to be used programmatically by other Odoo
+modules. You create and configure ``openai.vision.session`` records and
+call the method ``call_openai()`` from your own business logic.
 
 For example, a product name generator module may call this module's
 session as follows:

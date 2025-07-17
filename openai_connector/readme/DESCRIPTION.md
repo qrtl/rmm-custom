@@ -1,7 +1,6 @@
-This module defines openai.vision.session, which enables programmatic
-access to OpenAI’s GPT-4o model using structured payloads. It supports
-multimodal input (images and text), optional web search, and structured
+This module defines openai.vision.session, which enables programmatic access to OpenAI’.
+It supports multimodal input (images and text), optional web search, and structured
 output via JSON Schema.
 
-The module is designed as a backend service and is intended to be
-invoked by other modules. 
+The module is designed as a backend service and is intended to be invoked by other
+modules. 
