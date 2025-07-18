@@ -20,20 +20,30 @@ class OpenaiVisionSession(models.Model):
     )
     temperature = fields.Float(
         default=0.7,
-        help="Sets response randomness (0–2). Higher is more creative, lower is more focused.",
+        help="Sets response randomness (0–2)."
+        " Higher is more creative, lower is more focused.",
     )
     instruction = fields.Text(
         help="System-level instruction for the assistant."
-        "\nExample: You are a helpful assistant that answers in Japanese."
+        " Example: You are a helpful assistant that answers in Japanese."
     )
     previous_response_id = fields.Char(
         string="Previous Response ID",
         help="ID of previous response to continue chat (expires in 30 days).",
     )
-    store_response = fields.Boolean()
-    web_search = fields.Boolean(string="Use Web Search")
+    store_response = fields.Boolean(
+        help="If enabled, the API response is stored and the response ID is saved for"
+        " session continuity, allowing the conversation context to be preserved across"
+        " multiple calls."
+    )
+    web_search = fields.Boolean(
+        string="Use Web Search",
+        help="If enabled, the model can use web search to find information beyond its",
+    )
     response_format_enabled = fields.Boolean(
-        string="Use Structured Output (JSON Schema)"
+        string="Use Structured Output (JSON Schema)",
+        help="If enabled, the response will be structured according to "
+        "the Response Format Schema (JSON)",
     )
     response_format_schema = fields.Text(
         string="Response Format Schema (JSON)",
