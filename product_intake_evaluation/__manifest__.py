@@ -20,7 +20,7 @@
         "security/ir.model.access.csv",
         "data/intake_evaluation_board_data.xml",
         "data/menu_item_data.xml",
-        "views/valuation_status_views.xml",
+        # "views/valuation_status_views.xml",
         "views/product_template_views.xml",
         "views/res_users_views.xml",
         "views/res_partner_views.xml",

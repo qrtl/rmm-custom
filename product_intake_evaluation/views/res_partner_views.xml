@@ -5,8 +5,13 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='vat']/.." position="inside">
-                <field name="is_intake_evaluation_branch" />
+            <xpath expr="//page[@name='internal_notes']" position="after">
+                <page name="intake_evaluation_info" string="Intake Evaluation Info">
+                    <group name="intake_evaluation_info_group">
+                        <field name="is_intake_evaluation_partner" />
+                        <field name="branch_id" />
+                    </group>
+                </page>
             </xpath>
         </field>
     </record>

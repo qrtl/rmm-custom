@@ -7,7 +7,8 @@ from odoo import fields, models
 class ResPartner(models.Model):
     _inherit = "res.partner"
 
-    is_intake_evaluation_branch = fields.Boolean(
+    is_intake_evaluation_partner = fields.Boolean(
         default=False,
         copy=False,
     )
+    branch_id = fields.Many2one("res.partner")

@@ -28,7 +28,7 @@ class ResUsers(models.Model):
         for user in self:
             if user.is_intake_evaluation_user:
                 user.groups_id = [Command.link(group.id)]
-                user.partner_id.is_intake_evaluation_branch = True
+                user.partner_id.is_intake_evaluation_partner = True
             else:
                 user.groups_id = [Command.unlink(group.id)]
 
@@ -46,6 +46,6 @@ class ResUsers(models.Model):
         for user in self:
             if user.is_intake_evaluation_manager:
                 user.groups_id = [Command.link(group.id)]
-                user.partner_id.is_intake_evaluation_branch = True
+                user.partner_id.is_intake_evaluation_partner = True
             else:
                 user.groups_id = [Command.unlink(group.id)]
