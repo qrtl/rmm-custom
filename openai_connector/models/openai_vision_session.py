@@ -13,8 +13,14 @@ class OpenaiVisionSession(models.Model):
     _description = "OpenAI Vision Session"
 
     name = fields.Char(required=True)
-    model = fields.Selection(
+    reference_code = fields.Char(
+        required=True,
+        help="Expected to act as an identifier of the OpenAI Vision Session "
+        "record along with External System.",
+    )
+    llm_model = fields.Selection(
         [("gpt-4o", "GPT-4o")],
+        string="Model",
         default="gpt-4o",
         required=True,
     )
@@ -38,7 +44,8 @@ class OpenaiVisionSession(models.Model):
     )
     web_search = fields.Boolean(
         string="Use Web Search",
-        help="If enabled, the model can use web search to find information beyond its",
+        help="If enabled, the model can use web search to find information beyond "
+        "its training data.",
     )
     response_format_enabled = fields.Boolean(
         string="Use Structured Output (JSON Schema)",
@@ -70,52 +77,47 @@ class OpenaiVisionSession(models.Model):
     def _get_request_payload(self, input_datas):
         self.ensure_one()
         try:
-            request_payload = {
-                "model": self.model,
-                "instructions": self.instruction or "",
-                "input": json.loads(input_datas) or [],
-                "temperature": self.temperature,
-                "store": self.store_response,
-                "tools": [{"type": "web_search_preview"}] if self.web_search else [],
-            }
-            if self.response_format_enabled:
-                schema = json.loads(self.response_format_schema or "{}")
-                request_payload["text"] = {
-                    "format": {
-                        "type": "json_schema",
-                        "name": "json_schema",
-                        "schema": schema,
-                    }
+            json.loads(input_datas or "[]")
+        except json.JSONDecodeError as e:
+            raise UserError(_("The inputs are invalid: %s") % e) from e
+        request_payload = {
+            "model": self.llm_model,
+            "instructions": self.instruction or "",
+            "input": json.loads(input_datas) or [],
+            "temperature": self.temperature,
+            "store": self.store_response,
+            "tools": [{"type": "web_search_preview"}] if self.web_search else [],
+        }
+        if self.response_format_enabled:
+            schema = json.loads(self.response_format_schema or "{}")
+            request_payload["text"] = {
+                "format": {
+                    "type": "json_schema",
+                    "name": "json_schema",
+                    "schema": schema,
                 }
-            if self.previous_response_id:
-                request_payload["previous_response_id"] = self.previous_response_id
-            return request_payload
-        except Exception as e:
-            raise UserError(
-                _("Failed to compute request_payload for session %(id)s: %(error)s")
-                % {"id": self.id, "error": e}
-            ) from e
+            }
+        if self.previous_response_id:
+            request_payload["previous_response_id"] = self.previous_response_id
+        return request_payload
 
     def call_openai(self, input_datas):
         self.ensure_one()
         payload = self._get_request_payload(input_datas)
-        try:
-            response = self.make_api_call(
-                "openai",
-                endpoint="v1/responses",
-                json=payload,
-                http_method="post",
-            )
-            response_json = response.json()
-            refusal = response_json.get("refusal_reason")
-            if refusal:
-                raise UserError(_("OpenAI refused the request:\n{}").format(refusal))
-            if self.store_response:
-                self.previous_response_id = response_json.get("id")
-            output = response_json.get("output", [])
-            contents = []
-            for item in output:
-                contents.extend(item.get("content", []))
-            return contents[0].get("text")
-        except Exception as e:
-            raise UserError(_("OpenAI error:\n{}").format(e)) from e
+        response = self.make_api_call(
+            "openai",
+            endpoint="v1/responses",
+            json=payload,
+            http_method="post",
+        )
+        response_json = response.json()
+        refusal = response_json.get("refusal_reason")
+        if refusal:
+            raise UserError(_("OpenAI refused the request:\n{}").format(refusal))
+        if self.store_response:
+            self.previous_response_id = response_json.get("id")
+        output = response_json.get("output", [])
+        contents = []
+        for item in output:
+            contents.extend(item.get("content", []))
+        return contents[0].get("text")

@@ -1,4 +1,4 @@
-This module defines openai.vision.session, which enables programmatic access to OpenAI’.
+This module defines openai.vision.session, which enables programmatic access to OpenAI.
 It supports multimodal input (images and text), optional web search, and structured
 output via JSON Schema.
 

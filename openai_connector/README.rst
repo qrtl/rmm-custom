@@ -23,7 +23,7 @@ Openai Connector
 |badge1| |badge2| |badge3|
 
 This module defines openai.vision.session, which enables programmatic
-access to OpenAI’. It supports multimodal input (images and text),
+access to OpenAI. It supports multimodal input (images and text),
 optional web search, and structured output via JSON Schema.
 
 The module is designed as a backend service and is intended to be
@@ -41,8 +41,7 @@ Set the value of code to 'openai' in your API configuration.
 
 This module depends on the 'base_api_connection'. Therefore, please
 follow the configuration steps outlined in that module. In particular,
-for the OpenAI API Configuration, set the api_key in the format: Bearer
-APIKEY
+for the OpenAI API Configuration, set only the api_key.
 
 Basically, The OpenAI session should be added by a specific module that
 depends on this one. To adjust the session attributes, go to Settings →
@@ -63,7 +62,10 @@ session as follows:
 
 .. code:: python
 
-   session = env.ref('product_name_generator.openai_vision_session_product_name_generator')
+   session = self.env["openai.vision.session"].search(
+       [("reference_code", "=", "product_name_generator")],
+       limit=1,
+   )
    input_image = f"{base_url}/web/image/{self._name}/{self.id}/image_1920"
    input_data = json.dumps([
        {"role": "user", "content": [{"type": "input_image", "image_url": image_url}]}

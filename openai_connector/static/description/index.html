@@ -370,7 +370,7 @@ ul.auto-toc {
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/lgpl-3.0-standalone.html"><img alt="License: LGPL-3" src="https://img.shields.io/badge/licence-LGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/qrtl/rmm-custom/tree/15.0/openai_connector"><img alt="qrtl/rmm-custom" src="https://img.shields.io/badge/github-qrtl%2Frmm--custom-lightgray.png?logo=github" /></a></p>
 <p>This module defines openai.vision.session, which enables programmatic
-access to OpenAI’. It supports multimodal input (images and text),
+access to OpenAI. It supports multimodal input (images and text),
 optional web search, and structured output via JSON Schema.</p>
 <p>The module is designed as a backend service and is intended to be
 invoked by other modules.</p>
@@ -392,8 +392,7 @@ invoked by other modules.</p>
 <p>Set the value of code to ‘openai’ in your API configuration.</p>
 <p>This module depends on the ‘base_api_connection’. Therefore, please
 follow the configuration steps outlined in that module. In particular,
-for the OpenAI API Configuration, set the api_key in the format: Bearer
-APIKEY</p>
+for the OpenAI API Configuration, set only the api_key.</p>
 <p>Basically, The OpenAI session should be added by a specific module that
 depends on this one. To adjust the session attributes, go to Settings →
 Technical →OpenAI Vision Sessions.</p>
@@ -408,7 +407,10 @@ call the method <tt class="docutils literal">call_openai()</tt> from your own bu
 <p>For example, a product name generator module may call this module’s
 session as follows:</p>
 <pre class="code python literal-block">
-<span class="n">session</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">'product_name_generator.openai_vision_session_product_name_generator'</span><span class="p">)</span><span class="w">
+<span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s2">&quot;openai.vision.session&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="w">
+</span>    <span class="p">[(</span><span class="s2">&quot;reference_code&quot;</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="s2">&quot;product_name_generator&quot;</span><span class="p">)],</span><span class="w">
+</span>    <span class="n">limit</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="p">)</span><span class="w">
 </span><span class="n">input_image</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/web/image/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">/image_1920&quot;</span><span class="w">
 </span><span class="n">input_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">([</span><span class="w">
 </span>    <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;input_image&quot;</span><span class="p">,</span> <span class="s2">&quot;image_url&quot;</span><span class="p">:</span> <span class="n">image_url</span><span class="p">}]}</span><span class="w">

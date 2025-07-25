@@ -3,7 +3,8 @@
         <field name="name">OpenAI</field>
         <field name="base_url">https://api.openai.com</field>
         <field name="code">openai</field>
-        <field name="api_key">Bearer </field>
         <field name="header_api_key_string">Authorization</field>
+        <field name="token_type">Bearer </field>
+        <field name="api_key">Dummy Key</field>
     </record>
 </odoo>
