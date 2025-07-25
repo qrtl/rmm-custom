@@ -2,7 +2,7 @@ Set the value of code to 'openai' in your API configuration.
 
 This module depends on the 'base_api_connection'. Therefore, please follow the 
 configuration steps outlined in that module. In particular, for the OpenAI API 
-Configuration, set only the api_key.
+Configuration, only set the api_key.
 
 
 Basically, The OpenAI session should be added by a specific module that depends on this
