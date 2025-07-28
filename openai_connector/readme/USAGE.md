@@ -1,4 +1,4 @@
-This module is intended to be used programmatically by other Odoo modules.  You create
+This module is intended to be used programmatically by other Odoo modules. You create
 and configure `openai.vision.session` records and call the method `call_openai()` from
 your own business logic.
 
@@ -6,7 +6,7 @@ For example, a product name generator module may call this module's session as f
 
 ```python
 session = self.env["openai.vision.session"].search(
-    [("reference_code", "=", "product_name_generator")],
+    [("session_purpose", "=", "product_name_generation")],
     limit=1,
 )
 input_image = f"{base_url}/web/image/{self._name}/{self.id}/image_1920"

@@ -12,11 +12,7 @@ class ProductTemplate(models.Model):
 
     openai_generated_name = fields.Char()
 
-    def generate_name(self, session, base_url):
-        is_published = self.is_published
-        if not is_published:
-            # Need to be published to be accessible to the public.
-            self.is_published = True
+    def generate_name(self, session, base_url, is_published):
         input_image = f"{base_url}/web/image/{self._name}/{self.id}/image_1920"
         input_datas = json.dumps(
             [
@@ -34,7 +30,7 @@ class ProductTemplate(models.Model):
 
     def action_generate_product_name(self):
         session = self.env["openai.vision.session"].search(
-            [("reference_code", "=", "product_name_generator")],
+            [("session_purpose", "=", "product_name_generation")],
             limit=1,
         )
         if not session:
@@ -43,4 +39,8 @@ class ProductTemplate(models.Model):
         for rec in self:
             if not rec.image_1920:
                 raise UserError(_("Please upload the image first."))
-            rec.with_delay().generate_name(session, base_url)
+            is_published = rec.is_published
+            if not is_published:
+                # Need to be published to be accessible to the public.
+                rec.is_published = True
+            rec.with_delay().generate_name(session, base_url, is_published)

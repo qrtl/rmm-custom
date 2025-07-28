@@ -22,7 +22,8 @@ Product Name Generator
 
 |badge1| |badge2| |badge3|
 
-This module allows generating the product name by calling the OpenAI
+This module adds an openai_generated_name field to the product template
+to store product names generated from product images using the OpenAI
 API.
 
 **Table of contents**
@@ -39,9 +40,11 @@ to the configuration steps outlined in this module.
 Usage
 =====
 
-- Go to the Product form.
-- Click on one of the Extra Product Media items.
-- Click the "Generate Product Name" button.
+To generate product names using the OpenAI API:
+
+-  Go to the Product list view.
+-  Select the products for which you want to generate names.
+-  Click "Generate Product Name Using OpenAI" from the Action dropdown.
 
 Bug Tracker
 ===========

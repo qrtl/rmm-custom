@@ -2,9 +2,12 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 import json
+import logging
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
+
+_logger = logging.getLogger(__name__)
 
 
 class OpenaiVisionSession(models.Model):
@@ -13,10 +16,10 @@ class OpenaiVisionSession(models.Model):
     _description = "OpenAI Vision Session"
 
     name = fields.Char(required=True)
-    reference_code = fields.Char(
+    session_purpose = fields.Selection(
+        selection=[],
         required=True,
-        help="Expected to act as an identifier of the OpenAI Vision Session "
-        "record along with External System.",
+        help="Defines the specific purpose of the OpenAI Vision session.",
     )
     llm_model = fields.Selection(
         [("gpt-4o", "GPT-4o")],
@@ -110,7 +113,11 @@ class OpenaiVisionSession(models.Model):
             json=payload,
             http_method="post",
         )
-        response_json = response.json()
+        try:
+            response_json = response.json()
+        except json.decoder.JSONDecodeError as e:
+            _logger.exception("Malformed JSON from OpenAI")
+            raise UserError(_("OpenAI returned invalid JSON.")) from e
         refusal = response_json.get("refusal_reason")
         if refusal:
             raise UserError(_("OpenAI refused the request:\n{}").format(refusal))

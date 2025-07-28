@@ -1,3 +1,5 @@
-- Go to the Product form.
-- Click on one of the Extra Product Media items.
-- Click the "Generate Product Name" button.
+To generate product names using the OpenAI API:
+
+- Go to the Product list view.
+- Select the products for which you want to generate names.
+- Click "Generate Product Name Using OpenAI" from the Action dropdown.
