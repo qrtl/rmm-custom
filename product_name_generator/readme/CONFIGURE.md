@@ -2,7 +2,7 @@ This module creates an OpenAI Vision session for Product Name Generator.
 
 To customize the prompt sent to OpenAI along with the product image:
 
-- Go to Settings → Technical →OpenAI Vision Sessions.
+- Go to Settings → Technical → OpenAI Vision Sessions.
 - Select the record named "Product Name Generator".
 - Modify the Instruction field as needed.
 
