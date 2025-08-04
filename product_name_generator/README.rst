@@ -26,6 +26,8 @@ This module adds the openai_generated_name field to the product template
 to store product names generated from product images using the OpenAI
 API.
 
+This module creates an OpenAI Vision session for Product Name Generator.
+
 **Table of contents**
 
 .. contents::
@@ -33,8 +35,6 @@ API.
 
 Configuration
 =============
-
-This module creates an OpenAI Vision session for Product Name Generator.
 
 To customize the prompt sent to OpenAI along with the product image:
 
