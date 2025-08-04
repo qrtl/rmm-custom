@@ -4,7 +4,7 @@
         model="openai.vision.session"
     >
     <field name="name">Product Name Generator</field>
-    <field name="session_purpose">product_name_generation</field>
+    <field name="reference_code">product_name_generation</field>
     <field name="llm_model">gpt-4o</field>
     <field name="temperature">1</field>
     <field name="instruction">Please create product name.</field>

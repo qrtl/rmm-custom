@@ -13,9 +13,9 @@ Openai Connector
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-LGPL--3-blue.png
-    :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
-    :alt: License: LGPL-3
+.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
+    :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Frmm--custom-lightgray.png?logo=github
     :target: https://github.com/qrtl/rmm-custom/tree/15.0/openai_connector
     :alt: qrtl/rmm-custom
@@ -48,7 +48,7 @@ For the OpenAI API configuration:
 -  The base_url, token_type, and header_api_key_string are prefilled by
    this module.
 
-Basically, The OpenAI session should be added by a specific module that
+Basically, the OpenAI session should be added by a specific module that
 depends on this one. To adjust the session attributes,
 
 -  Go to Settings → Technical →OpenAI Vision Sessions.
@@ -69,7 +69,7 @@ session as follows:
 .. code:: python
 
    session = self.env["openai.vision.session"].search(
-       [("session_purpose", "=", "product_name_generation")],
+       [("reference_code", "=", "product_name_generation")],
        limit=1,
    )
    input_image = f"{base_url}/web/image/{self._name}/{self.id}/image_1920"

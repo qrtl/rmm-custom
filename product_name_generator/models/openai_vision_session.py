@@ -7,7 +7,7 @@ from odoo import fields, models
 class OpenAIVisionSession(models.Model):
     _inherit = "openai.vision.session"
 
-    session_purpose = fields.Selection(
+    reference_code = fields.Selection(
         selection_add=[("product_name_generation", "Product Name Generation")],
         ondelete={"product_name_generation": "cascade"},
     )

@@ -6,7 +6,7 @@ For example, a product name generator module may call this module's session as f
 
 ```python
 session = self.env["openai.vision.session"].search(
-    [("session_purpose", "=", "product_name_generation")],
+    [("reference_code", "=", "product_name_generation")],
     limit=1,
 )
 input_image = f"{base_url}/web/image/{self._name}/{self.id}/image_1920"

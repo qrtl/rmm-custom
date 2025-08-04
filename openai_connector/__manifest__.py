@@ -1,11 +1,11 @@
 # Copyright 2025 Quartile (https://www.quartile.co)
-# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 {
-    "name": "Openai Connector",
+    "name": "OpenAI Connector",
     "version": "15.0.1.0.0",
     "author": "Quartile",
-    "license": "LGPL-3",
+    "license": "AGPL-3",
     "website": "https://www.quartile.co",
     "depends": ["base_api_connection"],
     "data": [

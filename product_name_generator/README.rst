@@ -22,7 +22,7 @@ Product Name Generator
 
 |badge1| |badge2| |badge3|
 
-This module adds an openai_generated_name field to the product template
+This module adds the openai_generated_name field to the product template
 to store product names generated from product images using the OpenAI
 API.
 
@@ -38,20 +38,26 @@ This module creates an OpenAI Vision session for Product Name Generator.
 
 To customize the prompt sent to OpenAI along with the product image:
 
--  Go to Settings → Technical → OpenAI Vision Sessions.
--  Select the record named "Product Name Generator".
--  Modify the Instruction field as needed.
+- Go to Settings → Technical → OpenAI Vision Sessions.
+- Select the record named "Product Name Generator".
+- Modify the Instruction field as needed.
 
 For other parameters, please refer to the OpenAI official documentation.
 
 Usage
 =====
 
-To generate product names using the OpenAI API:
+To generate product names using the OpenAI API: openai_generated_name
 
--  Go to the Product list view.
+
+-  Go to product template list view.
 -  Select the products for which you want to generate names.
 -  Click "Generate Product Name Using OpenAI" from the Action dropdown.
+-  OpenAI Generated Name will be updated once the session is complete.
+  (Note: You may need to refresh the page to see the updated names.)
+
+If the request with OpenAI fails, you can check the Queue Job records to
+investigate.
 
 Bug Tracker
 ===========

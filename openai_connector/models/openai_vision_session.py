@@ -1,5 +1,5 @@
 # Copyright 2025 Quartile (https://www.quartile.co)
-# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import json
 import logging
@@ -16,7 +16,7 @@ class OpenaiVisionSession(models.Model):
     _description = "OpenAI Vision Session"
 
     name = fields.Char(required=True)
-    session_purpose = fields.Selection(
+    reference_code = fields.Selection(
         selection=[],
         required=True,
         help="Defines the specific purpose of the OpenAI Vision session.",

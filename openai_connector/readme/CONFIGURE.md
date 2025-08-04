@@ -9,7 +9,7 @@ For the OpenAI API configuration:
 - The base_url, token_type, and header_api_key_string are prefilled by this module.
 
 
-Basically, The OpenAI session should be added by a specific module that depends on this
+Basically, the OpenAI session should be added by a specific module that depends on this
 one.
 To adjust the session attributes, 
 

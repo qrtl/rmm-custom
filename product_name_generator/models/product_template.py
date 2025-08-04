@@ -30,7 +30,7 @@ class ProductTemplate(models.Model):
 
     def action_generate_product_name(self):
         session = self.env["openai.vision.session"].search(
-            [("session_purpose", "=", "product_name_generation")],
+            [("reference_code", "=", "product_name_generation")],
             limit=1,
         )
         if not session:
