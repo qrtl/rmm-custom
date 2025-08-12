@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Top menu item -->
+    <menuitem
+        id="intake_evaluation_menu_root"
+        name="Intake Evaluation"
+        groups="product_intake_evaluation.group_intake_evaluation_user,product_intake_evaluation.group_intake_evaluation_admin"
+        web_icon="product_intake_evaluation,static/description/icon.png"
+        action="open_board_intake_evaluation_dash_action"
+        sequence="28"
+    />
+    <menuitem
+        id="menu_product_intake_evaluation"
+        name="Products"
+        parent="product_intake_evaluation.intake_evaluation_menu_root"
+        sequence="10"
+    />
+    <menuitem
+        id="menu_product_template"
+        name="Products"
+        parent="product_intake_evaluation.menu_product_intake_evaluation"
+        action="action_product_template_intake_evaluation_view"
+        sequence="5"
+    />
+</odoo>

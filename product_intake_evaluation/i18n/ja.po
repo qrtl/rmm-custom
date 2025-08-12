@@ -1,0 +1,271 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* product_intake_evaluation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-24 09:41+0000\n"
+"PO-Revision-Date: 2025-07-24 09:41+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: product_intake_evaluation
+#: model_terms:ir.ui.view,arch_db:product_intake_evaluation.board_intake_evaluation_dash_view
+msgid "<i class=\"fa fa-archive fa-6x\" title=\"Products\"/>"
+msgstr ""
+
+#. module: product_intake_evaluation
+#: model:ir.model.fields.selection,name:product_intake_evaluation.selection__product_template__valuation_status__acceptable
+msgid "Acceptable"
+msgstr "受入可"
+
+#. module: product_intake_evaluation
+#: model_terms:ir.ui.view,arch_db:product_intake_evaluation.product_template_intake_evaluation_form_view
+msgid "Add a Media"
+msgstr "画像を追加"
+
+#. module: product_intake_evaluation
+#: model_terms:ir.ui.view,arch_db:product_intake_evaluation.product_template_form_view
+#: model_terms:ir.ui.view,arch_db:product_intake_evaluation.product_template_intake_evaluation_form_view
+msgid "Appraisal Information"
+msgstr "査定情報"
+
+#. module: product_intake_evaluation
+#: model:ir.model.fields.selection,name:product_intake_evaluation.selection__product_template__valuation_status__before_valuation
+msgid "Before Valuation"
+msgstr "査定前"
+
+#. module: product_intake_evaluation
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_intake_evaluation_board__board_type
+msgid "Board Type"
+msgstr ""
+
+#. module: product_intake_evaluation
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_product_product__branch_id
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_product_template__branch_id
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_res_partner__branch_id
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_res_users__branch_id
+#: model_terms:ir.ui.view,arch_db:product_intake_evaluation.product_template_intake_evaluation_search_view
+msgid "Branch"
+msgstr "担当支店"
+
+#. module: product_intake_evaluation
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_product_product__carrier_contact_person
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_product_template__carrier_contact_person
+msgid "Carrier Contact Person"
+msgstr "担当者"
+
+#. module: product_intake_evaluation
+#: model:ir.model,name:product_intake_evaluation.model_res_partner
+msgid "Contact"
+msgstr "連絡先"
+
+#. module: product_intake_evaluation
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_intake_evaluation_board__create_uid
+msgid "Created by"
+msgstr "作成者"
+
+#. module: product_intake_evaluation
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_intake_evaluation_board__create_date
+msgid "Created on"
+msgstr "作成日"
+
+#. module: product_intake_evaluation
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_intake_evaluation_board__display_name
+msgid "Display Name"
+msgstr "表示名"
+
+#. module: product_intake_evaluation
+#: model_terms:ir.ui.view,arch_db:product_intake_evaluation.product_template_intake_evaluation_form_view
+msgid "Extra Product Media"
+msgstr "追加プロダクトメディア"
+
+#. module: product_intake_evaluation
+#: model_terms:ir.ui.view,arch_db:product_intake_evaluation.product_template_intake_evaluation_search_view
+msgid "Group By"
+msgstr "グループ化"
+
+#. module: product_intake_evaluation
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_intake_evaluation_board__id
+msgid "ID"
+msgstr ""
+
+#. module: product_intake_evaluation
+#: model:ir.module.category,name:product_intake_evaluation.module_category_intake_evaluation
+#: model:ir.ui.menu,name:product_intake_evaluation.intake_evaluation_menu_root
+#: model_terms:ir.ui.view,arch_db:product_intake_evaluation.view_users_form
+msgid "Intake Evaluation"
+msgstr "受入評価"
+
+#. module: product_intake_evaluation
+#: model:res.groups,name:product_intake_evaluation.group_intake_evaluation_admin
+msgid "Intake Evaluation Admin"
+msgstr "受入評価管理者"
+
+#. module: product_intake_evaluation
+#: model:ir.actions.act_window,name:product_intake_evaluation.open_board_intake_evaluation_dash_action
+#: model:ir.model,name:product_intake_evaluation.model_intake_evaluation_board
+msgid "Intake Evaluation Board"
+msgstr "受入評価"
+
+#. module: product_intake_evaluation
+#: model_terms:ir.ui.view,arch_db:product_intake_evaluation.view_partner_form
+msgid "Intake Evaluation Info"
+msgstr "受入評価情報"
+
+#. module: product_intake_evaluation
+#: model:res.groups,name:product_intake_evaluation.group_intake_evaluation_manager
+msgid "Intake Evaluation Manager"
+msgstr "受入評価マネジャ"
+
+#. module: product_intake_evaluation
+#: model:res.groups,name:product_intake_evaluation.group_intake_evaluation_user
+msgid "Intake Evaluation User"
+msgstr "受入評価ユーザ"
+
+#. module: product_intake_evaluation
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_res_users__is_intake_evaluation_manager
+msgid "Is Intake Evaluation Manager"
+msgstr "受入評価マネジャ"
+
+#. module: product_intake_evaluation
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_res_partner__is_intake_evaluation_partner
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_res_users__is_intake_evaluation_partner
+msgid "Is Intake Evaluation Partner"
+msgstr "受入評価パートナー"
+
+#. module: product_intake_evaluation
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_res_users__is_intake_evaluation_user
+msgid "Is Intake Evaluation User"
+msgstr "受入評価ユーザ"
+
+#. module: product_intake_evaluation
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_intake_evaluation_board____last_update
+msgid "Last Modified on"
+msgstr "最終更新日"
+
+#. module: product_intake_evaluation
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_intake_evaluation_board__write_uid
+msgid "Last Updated by"
+msgstr "最終更新者"
+
+#. module: product_intake_evaluation
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_intake_evaluation_board__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: product_intake_evaluation
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_intake_evaluation_board__name
+msgid "Name"
+msgstr "名称"
+
+#. module: product_intake_evaluation
+#: model:ir.model.fields.selection,name:product_intake_evaluation.selection__product_template__valuation_status__need_info
+msgid "Need More Information"
+msgstr "情報追加依頼"
+
+#. module: product_intake_evaluation
+#: model_terms:ir.ui.view,arch_db:product_intake_evaluation.product_template_intake_evaluation_search_view
+msgid "Non-displayed Products"
+msgstr "非表示にされたプロダクト"
+
+#. module: product_intake_evaluation
+#: model_terms:ir.ui.view,arch_db:product_intake_evaluation.product_template_intake_evaluation_form_view
+msgid "Product Image"
+msgstr "プロダクト画像"
+
+#. module: product_intake_evaluation
+#: model_terms:ir.ui.view,arch_db:product_intake_evaluation.product_template_intake_evaluation_form_view
+#: model_terms:ir.ui.view,arch_db:product_intake_evaluation.product_template_intake_evaluation_tree_view
+msgid "Product Name"
+msgstr "プロダクト名"
+
+#. module: product_intake_evaluation
+#: model:ir.model,name:product_intake_evaluation.model_product_template
+msgid "Product Template"
+msgstr "プロダクトテンプレート"
+
+#. module: product_intake_evaluation
+#: model:ir.actions.act_window,name:product_intake_evaluation.action_product_template_intake_evaluation_view
+#: model:ir.model.fields.selection,name:product_intake_evaluation.selection__intake_evaluation_board__board_type__product
+#: model:ir.ui.menu,name:product_intake_evaluation.menu_product_intake_evaluation
+#: model:ir.ui.menu,name:product_intake_evaluation.menu_product_template
+#: model_terms:ir.ui.view,arch_db:product_intake_evaluation.board_intake_evaluation_dash_view
+#: model_terms:ir.ui.view,arch_db:product_intake_evaluation.product_template_intake_evaluation_form_view
+msgid "Products"
+msgstr "プロダクト"
+
+#. module: product_intake_evaluation
+#: model:ir.model.fields.selection,name:product_intake_evaluation.selection__product_template__valuation_status__received
+msgid "Received"
+msgstr "配送済"
+
+#. module: product_intake_evaluation
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_product_product__carrier_note
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_product_template__carrier_note
+msgid "carrier_note"
+msgstr "補足"
+
+#. module: product_intake_evaluation
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_product_product__sales_office_id
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_product_template__sales_office_id
+#: model_terms:ir.ui.view,arch_db:product_intake_evaluation.product_template_intake_evaluation_search_view
+msgid "Sales Office"
+msgstr "担当営業所"
+
+#. module: product_intake_evaluation
+#: model_terms:ir.ui.view,arch_db:product_intake_evaluation.product_template_intake_evaluation_search_view
+msgid "Search Intake Evaluation Products"
+msgstr ""
+
+#. module: product_intake_evaluation
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_product_product__tracking_no_1
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_product_template__tracking_no_1
+msgid "Tracking No 1"
+msgstr "問番1"
+
+#. module: product_intake_evaluation
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_product_product__tracking_no_2
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_product_template__tracking_no_2
+msgid "Tracking No 2"
+msgstr "問番2"
+
+#. module: product_intake_evaluation
+#: model:ir.model.fields.selection,name:product_intake_evaluation.selection__product_template__valuation_status__unacceptable
+msgid "Unacceptable"
+msgstr "受入不可"
+
+#. module: product_intake_evaluation
+#: model:ir.model,name:product_intake_evaluation.model_res_users
+msgid "Users"
+msgstr "ユーザ"
+
+#. module: product_intake_evaluation
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_product_product__valuation_comment
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_product_template__valuation_comment
+msgid "Valuation Comment"
+msgstr "査定コメント"
+
+#. module: product_intake_evaluation
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_product_product__valuation_status
+#: model:ir.model.fields,field_description:product_intake_evaluation.field_product_template__valuation_status
+#: model_terms:ir.ui.view,arch_db:product_intake_evaluation.product_template_intake_evaluation_search_view
+msgid "Valuation Status"
+msgstr "査定ステータス"
+
+#. module: product_intake_evaluation
+#: code:addons/product_intake_evaluation/models/product_template.py:0
+#, python-format
+msgid "You do not have permission to modify the valuation status."
+msgstr "あなたは査定ステータスを更新できません。"
+
+#. module: product_intake_evaluation
+#: model_terms:ir.ui.view,arch_db:product_intake_evaluation.product_template_intake_evaluation_form_view
+msgid "e.g. Cheese Burger"
+msgstr "例: iPhone 16"
