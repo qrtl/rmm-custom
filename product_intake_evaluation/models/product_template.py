@@ -32,7 +32,7 @@ class ProductTemplate(models.Model):
     carrier_note = fields.Text()
     valuation_comment = fields.Text()
 
-    @api.depends("sales_office_id")
+    @api.depends("sales_office_id", "sales_office_id.branch_id")
     def _compute_branch_id(self):
         for product in self:
             if product.sales_office_id:
