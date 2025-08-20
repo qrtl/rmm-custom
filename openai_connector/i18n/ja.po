@@ -28,7 +28,7 @@ msgstr "作成日"
 #. module: openai_connector
 #: model:ir.model.fields,help:openai_connector.field_openai_vision_session__reference_code
 msgid "Defines the specific purpose of the OpenAI Vision session."
-msgstr "OpenAI Vission セッションの利用方法を目的を定義します"
+msgstr "OpenAI Vissionセッションの利用方法を目的を定義します"
 
 #. module: openai_connector
 #: model:ir.model.fields,field_description:openai_connector.field_openai_vision_session__display_name
@@ -111,12 +111,12 @@ msgstr "OpenAI"
 #. module: openai_connector
 #: model:ir.model,name:openai_connector.model_openai_vision_session
 msgid "OpenAI Vision Session"
-msgstr "OpenAI Vision セッション"
+msgstr "OpenAI Visionセッション"
 
 #. module: openai_connector
 #: model:ir.ui.menu,name:openai_connector.menu_openai_vision_sessions
 msgid "OpenAI Vision Sessions"
-msgstr "OpenAI Vision セッション"
+msgstr "OpenAI Visionセッション"
 
 #. module: openai_connector
 #: code:addons/openai_connector/models/openai_vision_session.py:0
@@ -207,9 +207,9 @@ msgstr "ウェブ検索を使用"
 #. module: openai_connector
 #: model_terms:ir.ui.view,arch_db:openai_connector.view_openai_vision_session_form
 msgid "Vision Session"
-msgstr "Vision セッション"
+msgstr "Visionセッション"
 
 #. module: openai_connector
 #: model:ir.actions.act_window,name:openai_connector.action_openai_vision_sessions
 msgid "Vision Sessions"
-msgstr "Vision セッション"
+msgstr "Visionセッション"
