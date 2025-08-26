@@ -28,11 +28,14 @@ class ProductTemplate(models.Model):
             response_json_str = session.call_openai(input_datas)
         except UserError as e:
             error_message = str(e)
-            # "Timeout while downloading" occurs when calling the OpenAI API to fetch an
-            # image. This usually happens if the image takes too long to load or the
-            # download is interrupted. In such cases, we treat it as a temporary issue
-            # and retry instead of failing permanently.
-            if "Timeout while downloading" in error_message:
+            # HTTP 400 Error about "Timeout while downloading" occurs when calling the
+            # OpenAI API to fetch an image. This usually happens if the image takes too
+            # long to load or the download is interrupted. In such cases, we treat it as
+            # a temporary issue and retry instead of failing permanently.
+            # "HTTP Error: 400" is used here because base_api_connector raises UserError
+            # instead of the original exception, so the full error details are not
+            # available to the caller.
+            if "HTTP Error: 400" in error_message:
                 raise RetryableJobError(
                     _("Retry due to temporary error: %s") % error_message, seconds=60
                 ) from None
