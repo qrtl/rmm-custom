@@ -6,6 +6,8 @@ import json
 from odoo import _, fields, models
 from odoo.exceptions import UserError
 
+from odoo.addons.queue_job.exception import RetryableJobError
+
 
 class ProductTemplate(models.Model):
     _inherit = "product.template"
@@ -22,7 +24,20 @@ class ProductTemplate(models.Model):
                 }
             ]
         )
-        response_json_str = session.call_openai(input_datas)
+        try:
+            response_json_str = session.call_openai(input_datas)
+        except UserError as e:
+            error_message = str(e)
+            # "Timeout while downloading" occurs when calling the OpenAI API to fetch an
+            # image. This usually happens if the image takes too long to load or the
+            # download is interrupted. In such cases, we treat it as a temporary issue
+            # and retry instead of failing permanently.
+            if "Timeout while downloading" in error_message:
+                raise RetryableJobError(
+                    _("Retry due to temporary error: %s") % error_message, seconds=60
+                ) from None
+            else:
+                raise
         response_json = json.loads(response_json_str)
         product_name = response_json.get("product_name")
         self.openai_generated_name = product_name
