@@ -369,20 +369,91 @@ ul.auto-toc {
 !! source digest: sha256:94dcc31390c9dcf68969bfb51cebb32d0a8c09d0a0bab48d9498e8fe60e3a239
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/qrtl/rmm-custom/tree/15.0/product_intake_evaluation"><img alt="qrtl/rmm-custom" src="https://img.shields.io/badge/github-qrtl%2Frmm--custom-lightgray.png?logo=github" /></a></p>
-<p>This module handle evaluation stuff.</p>
+<p>Products can be registered in Odoo by portal users and then evaluated
+and managed.</p>
+<p>This is intended for operations such as second-hand businesses, where
+products are registered in advance by portal users, and only accepted
+products are brought into the second-hand warehouse.</p>
+<p>Internal users can review the product information registered by portal
+users (images, condition, comments, etc.) and update the valuation
+status. Portal users can check that status and confirm whether their
+product has been marked as acceptable. Only acceptable products are
+actually delivered.</p>
+<p>The user access rights for the Intake Evaluation feature are as follows:</p>
+<ol class="arabic simple">
+<li>Intake Evaluation Admin: Assigned to internal users who manage the
+Intake Evaluation functionality.</li>
+<li>Intake Evaluation Manager: Portal user role that allows viewing of
+all products registered by all portal users.</li>
+<li>Intake Evaluation User: Portal user role that allows viewing only of
+products registered by themselves.</li>
+</ol>
+<p>This module depends on the OCA base_group_backend module.</p>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><a class="reference internal" href="#bug-tracker" id="toc-entry-1">Bug Tracker</a></li>
-<li><a class="reference internal" href="#credits" id="toc-entry-2">Credits</a><ul>
-<li><a class="reference internal" href="#authors" id="toc-entry-3">Authors</a></li>
-<li><a class="reference internal" href="#maintainers" id="toc-entry-4">Maintainers</a></li>
+<li><a class="reference internal" href="#usage" id="toc-entry-1">Usage</a><ul>
+<li><a class="reference internal" href="#portal-user-settings" id="toc-entry-2">Portal User Settings</a></li>
+<li><a class="reference internal" href="#intake-evaluation-form-view" id="toc-entry-3">Intake Evaluation Form View</a></li>
+<li><a class="reference internal" href="#intake-evaluation-list-view" id="toc-entry-4">Intake Evaluation List View</a></li>
+<li><a class="reference internal" href="#internal-user-view" id="toc-entry-5">Internal User View</a></li>
+<li><a class="reference internal" href="#branch-and-sales-office" id="toc-entry-6">Branch and Sales Office</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bug-tracker" id="toc-entry-7">Bug Tracker</a></li>
+<li><a class="reference internal" href="#credits" id="toc-entry-8">Credits</a><ul>
+<li><a class="reference internal" href="#authors" id="toc-entry-9">Authors</a></li>
+<li><a class="reference internal" href="#maintainers" id="toc-entry-10">Maintainers</a></li>
 </ul>
 </li>
 </ul>
 </div>
+<div class="section" id="usage">
+<h1><a class="toc-backref" href="#toc-entry-1">Usage</a></h1>
+<div class="section" id="portal-user-settings">
+<h2><a class="toc-backref" href="#toc-entry-2">Portal User Settings</a></h2>
+<p>From Settings &gt; Users &amp; Companies &gt; Users, click Create, select User
+Type: Backend UI user, and enable the Intake Evaluation User or Intake
+Evaluation Manager.</p>
+</div>
+<div class="section" id="intake-evaluation-form-view">
+<h2><a class="toc-backref" href="#toc-entry-3">Intake Evaluation Form View</a></h2>
+<p>When Intake Evaluation Users and Intake Evaluation Managers log in, they
+can only see the Intake Evaluation application. Both roles are able to
+create products.</p>
+<p>When a product is created, the Sales Office field is automatically
+filled with the name of the user who created it. (However, if the
+product is created by an internal user, this information is not
+recorded.)</p>
+<p>Intake Evaluation Users can only view products where the Sales Office
+matches their own record. Intake Evaluation Managers can view products
+assigned to any sales office.</p>
+<p>The value entered in the Sales Office field must be a contact with the
+Intake Evaluation Partner field enabled. This is automatically enabled
+when a user is created as an Intake Evaluation user or manager.</p>
+</div>
+<div class="section" id="intake-evaluation-list-view">
+<h2><a class="toc-backref" href="#toc-entry-4">Intake Evaluation List View</a></h2>
+<p>Intake Evaluation Users can export data using the Export button located
+next to the Create button at the top left. Records can also be grouped
+or searched by status or product name using the search view.</p>
+</div>
+<div class="section" id="internal-user-view">
+<h2><a class="toc-backref" href="#toc-entry-5">Internal User View</a></h2>
+<p>In Inventory &gt; Products, a new Evaluation Information tab has been
+added. Any edits made here are reflected in the Intake Evaluation
+module. Internal users typically update statuses from this tab.</p>
+</div>
+<div class="section" id="branch-and-sales-office">
+<h2><a class="toc-backref" href="#toc-entry-6">Branch and Sales Office</a></h2>
+<p>In the partner form view, a new Intake Evaluation Information tab has
+been added. This tab includes the Branch field.</p>
+<p>When an Branch is selected in the sales office, the product’s Branch
+field is automatically populated.</p>
+</div>
+</div>
 <div class="section" id="bug-tracker">
-<h1><a class="toc-backref" href="#toc-entry-1">Bug Tracker</a></h1>
+<h1><a class="toc-backref" href="#toc-entry-7">Bug Tracker</a></h1>
 <p>Bugs are tracked on <a class="reference external" href="https://github.com/qrtl/rmm-custom/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
@@ -390,15 +461,15 @@ If you spotted it first, help us to smash it by providing a detailed and welcome
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
-<h1><a class="toc-backref" href="#toc-entry-2">Credits</a></h1>
+<h1><a class="toc-backref" href="#toc-entry-8">Credits</a></h1>
 <div class="section" id="authors">
-<h2><a class="toc-backref" href="#toc-entry-3">Authors</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-9">Authors</a></h2>
 <ul class="simple">
 <li>Quartile</li>
 </ul>
 </div>
 <div class="section" id="maintainers">
-<h2><a class="toc-backref" href="#toc-entry-4">Maintainers</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-10">Maintainers</a></h2>
 <p>This module is part of the <a class="reference external" href="https://github.com/qrtl/rmm-custom/tree/15.0/product_intake_evaluation">qrtl/rmm-custom</a> project on GitHub.</p>
 <p>You are welcome to contribute.</p>
 </div>
