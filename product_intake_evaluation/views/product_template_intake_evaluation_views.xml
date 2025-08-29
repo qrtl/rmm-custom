@@ -6,13 +6,6 @@
         <field name="type">form</field>
         <field name="arch" type="xml">
             <form string="Products">
-                <header>
-                    <field
-                        name="valuation_status"
-                        widget="statusbar"
-                        options="{'clickable': '1'}"
-                    />
-                </header>
                 <sheet>
                     <field
                         name="image_1920"
@@ -40,6 +33,7 @@
                         >
                             <group>
                                 <group>
+                                    <field name="valuation_status" readonly="1" />
                                     <field
                                         name="product_state_id"
                                         options="{'no_open': True}"
@@ -98,6 +92,7 @@
         <field name="priority" eval="26" />
         <field name="arch" type="xml">
             <tree
+                decoration-success="valuation_status == 'acceptable'"
                 decoration-danger="valuation_status == 'need_info'"
                 decoration-info="valuation_status == 'received'"
             >
@@ -118,6 +113,7 @@
                     name="valuation_status"
                     optional="show"
                     widget="badge"
+                    decoration-success="valuation_status == 'acceptable'"
                     decoration-danger="valuation_status == 'need_info'"
                     decoration-info="valuation_status == 'received'"
                 />

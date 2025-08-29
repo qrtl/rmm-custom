@@ -1,8 +1,7 @@
 # Copyright 2025 Quartile (https://www.quartile.co)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import _, api, fields, models
-from odoo.exceptions import AccessError
+from odoo import api, fields, models
 
 
 class ProductTemplate(models.Model):
@@ -51,13 +50,3 @@ class ProductTemplate(models.Model):
             vals["sales_office_id"] = commercial_partner.id
         vals["valuation_status"] = "before_valuation"
         return super().create(vals)
-
-    def write(self, vals):
-        if "valuation_status" in vals:
-            if not self.env.user.has_group(
-                "product_intake_evaluation.group_intake_evaluation_admin"
-            ):
-                raise AccessError(
-                    _("You do not have permission to modify the valuation status.")
-                )
-        return super().write(vals)

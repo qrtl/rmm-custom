@@ -50,7 +50,7 @@
                     domain="[('is_intake_evaluation_partner', '=', True)]"
                     optional="show"
                 />
-                <field name="valuation_comment" />
+                <field name="valuation_comment" optional="show" />
             </xpath>
         </field>
     </record>
