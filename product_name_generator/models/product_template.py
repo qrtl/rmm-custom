@@ -15,6 +15,7 @@ class ProductTemplate(models.Model):
     openai_generated_name = fields.Char()
 
     def generate_name(self, session, base_url, is_published):
+        self.ensure_one()
         input_image = f"{base_url}/web/image/{self._name}/{self.id}/image_1920"
         input_datas = json.dumps(
             [
