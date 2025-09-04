@@ -9,6 +9,7 @@
     "website": "https://www.quartile.co",
     "depends": ["website_sale", "openai_connector", "queue_job"],
     "data": [
+        "data/ir_config_parameter.xml",
         "data/openai_vision_session.xml",
         "views/product_template_views.xml",
     ],
