@@ -38,7 +38,7 @@ class ProductTemplate(models.Model):
             openai_side_error = (
                 self.env["ir.config_parameter"]
                 .sudo()
-                .get_param("product.name.generator.openai.side.error")
+                .get_param("product_name_generator.openai.retry.message_substring")
             )
             error_detail = getattr(getattr(cause, "response", None), "text", "")[:500]
             if openai_side_error in error_detail:

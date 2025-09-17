@@ -1,6 +1,6 @@
 <odoo noupdate="1">
-  <record id="product_name_generator_openai_side_error" model="ir.config_parameter">
-    <field name="key">product.name.generator.openai.side.error</field>
+  <record id="param_openai_retry_msg_sub" model="ir.config_parameter">
+    <field name="key">product_name_generator.openai.retry.message_substring</field>
     <field name="value">Timeout while downloading</field>
   </record>
 </odoo>
