@@ -38,9 +38,9 @@ Configuration
 
 To customize the prompt sent to OpenAI along with the product image:
 
-- Go to Settings → Technical → OpenAI Vision Sessions.
-- Select the record named "Product Name Generator".
-- Modify the Instruction field as needed.
+-  Go to Settings → Technical → OpenAI Vision Sessions.
+-  Select the record named "Product Name Generator".
+-  Modify the Instruction field as needed.
 
 For other parameters, please refer to the OpenAI official documentation.
 
@@ -49,11 +49,11 @@ Usage
 
 To generate product names using the OpenAI API: openai_generated_name
 
-- Go to product template list view.
-- Select the products for which you want to generate names.
-- Click "Generate Product Name Using OpenAI" from the Action dropdown.
-- OpenAI Generated Name will be updated once the session is complete.
-  (Note: You may need to refresh the page to see the updated names.)
+-  Go to product template list view.
+-  Select the products for which you want to generate names.
+-  Click "Generate Product Name Using OpenAI" from the Action dropdown.
+-  OpenAI Generated Name will be updated once the session is complete.
+   (Note: You may need to refresh the page to see the updated names.)
 
 If the request with OpenAI fails, you can check the Queue Job records to
 investigate.
