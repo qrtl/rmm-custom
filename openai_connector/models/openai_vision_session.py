@@ -109,7 +109,6 @@ class OpenaiVisionSession(models.Model):
         payload = self._get_request_payload(input_datas)
         response = self.make_api_call(
             "openai",
-            endpoint="v1/responses",
             json=payload,
             http_method="post",
         )

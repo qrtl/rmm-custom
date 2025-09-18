@@ -1,7 +1,7 @@
 <odoo noupdate="1">
     <record id="api_config_openai" model="api.config">
         <field name="name">OpenAI</field>
-        <field name="base_url">https://api.openai.com</field>
+        <field name="base_url">https://api.openai.com/v1/responses</field>
         <field name="code">openai</field>
         <field name="header_api_key_string">Authorization</field>
         <field name="token_type">Bearer</field>
