@@ -32,16 +32,16 @@ class ProductTemplate(models.Model):
             # OpenAI API to fetch an image. This usually happens if the image takes too
             # long to load or the download is interrupted. In such cases, we treat it as
             # a temporary issue and retry instead of failing permanently.
-            # "openai_side_error" is used here because the error message text can be
+            # "retry_msg_substr " is used here because the error message text can be
             # changed from the GUI when the wording changes
             cause = e.__cause__
-            openai_side_error = (
+            retry_msg_substr = (
                 self.env["ir.config_parameter"]
                 .sudo()
-                .get_param("product_name_generator.openai.retry.message_substring")
+                .get_param("product_name_generator.openai_retry_message_substring")
             )
             error_detail = getattr(getattr(cause, "response", None), "text", "")[:500]
-            if openai_side_error in error_detail:
+            if retry_msg_substr in error_detail:
                 raise RetryableJobError(
                     _("Retry due to OpenAI temporary error"), seconds=60
                 ) from None
