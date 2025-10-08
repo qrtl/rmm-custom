@@ -1,0 +1,28 @@
+<odoo noupdate="1">
+  <record
+        id="openai_vision_session_product_name_generator"
+        model="openai.vision.session"
+    >
+    <field name="name">Product Name Generator</field>
+    <field name="reference_code">product_name_generation</field>
+    <field name="llm_model">gpt-4o</field>
+    <field name="temperature">1</field>
+    <field name="instruction">Please create product name.</field>
+    <field name="response_format_enabled">1</field>
+    <field name="response_format_schema">
+        <![CDATA[
+{
+  "type": "object",
+  "properties": {
+    "product_name": {"type": "string"}
+  },
+  "required": ["product_name"],
+  "additionalProperties": false,
+  "strict": true
+}
+        ]]>
+    </field>
+    <field name="web_search">1</field>
+    <field name="store_response">0</field>
+  </record>
+</odoo>

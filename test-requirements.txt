@@ -4,3 +4,4 @@ git+https://github.com/qrtl/rmm-oca@15.0#subdirectory=setup/sale_commission
 git+https://github.com/qrtl/rmm-oca@15.0#subdirectory=setup/base_custom_filter
 git+https://github.com/qrtl/rmm-oca@15.0#subdirectory=setup/base_group_backend
 git+https://github.com/qrtl/rmm-oca@15.0#subdirectory=setup/l10n_jp_partner_zip_address
+git+https://github.com/qrtl/rmm-oca@15.0#subdirectory=setup/base_api_connection

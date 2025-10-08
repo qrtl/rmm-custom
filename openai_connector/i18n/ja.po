@@ -1,0 +1,215 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* openai_connector
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-20 03:08+0000\n"
+"PO-Revision-Date: 2025-08-20 03:08+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: openai_connector
+#: model:ir.model.fields,field_description:openai_connector.field_openai_vision_session__create_uid
+msgid "Created by"
+msgstr "作成者"
+
+#. module: openai_connector
+#: model:ir.model.fields,field_description:openai_connector.field_openai_vision_session__create_date
+msgid "Created on"
+msgstr "作成日"
+
+#. module: openai_connector
+#: model:ir.model.fields,help:openai_connector.field_openai_vision_session__reference_code
+msgid "Defines the specific purpose of the OpenAI Vision session."
+msgstr "OpenAI Vissionセッションの利用方法を目的を定義します"
+
+#. module: openai_connector
+#: model:ir.model.fields,field_description:openai_connector.field_openai_vision_session__display_name
+msgid "Display Name"
+msgstr "表示名"
+
+#. module: openai_connector
+#: model:ir.model.fields.selection,name:openai_connector.selection__openai_vision_session__llm_model__gpt-4o
+msgid "GPT-4o"
+msgstr "GPT-4o"
+
+#. module: openai_connector
+#: model:ir.model.fields,field_description:openai_connector.field_openai_vision_session__id
+msgid "ID"
+msgstr "ID"
+
+#. module: openai_connector
+#: model:ir.model.fields,help:openai_connector.field_openai_vision_session__previous_response_id
+msgid "ID of previous response to continue chat (expires in 30 days)."
+msgstr "チャット継続用の前回のレスポンスID（30日で期限が切れる）"
+
+#. module: openai_connector
+#: model:ir.model.fields,help:openai_connector.field_openai_vision_session__store_response
+msgid ""
+"If enabled, the API response is stored and the response ID is saved for "
+"session continuity, allowing the conversation context to be preserved across"
+" multiple calls."
+msgstr ""
+"有効にすると、APIレスポンスが保存され、レスポンスIDも保持されます。これにより複数回の呼び出しにまたがって会話のコンテキストが維持されます。"
+
+#. module: openai_connector
+#: model:ir.model.fields,help:openai_connector.field_openai_vision_session__web_search
+msgid ""
+"If enabled, the model can use web search to find information beyond its "
+"training data."
+msgstr "有効にすると、モデルはトレーニングデータ以外の情報をウェブ検索で取得できます。"
+
+#. module: openai_connector
+#: model:ir.model.fields,help:openai_connector.field_openai_vision_session__response_format_enabled
+msgid ""
+"If enabled, the response will be structured according to the Response Format"
+" Schema (JSON)"
+msgstr "有効にすると、レスポンスはJSON形式のスキーマに従って構造化されます。"
+
+#. module: openai_connector
+#: model:ir.model.fields,field_description:openai_connector.field_openai_vision_session__instruction
+msgid "Instruction"
+msgstr "システム指示"
+
+#. module: openai_connector
+#: model:ir.model.fields,field_description:openai_connector.field_openai_vision_session____last_update
+msgid "Last Modified on"
+msgstr "最終変更日"
+
+#. module: openai_connector
+#: model:ir.model.fields,field_description:openai_connector.field_openai_vision_session__write_uid
+msgid "Last Updated by"
+msgstr "最終更新者"
+
+#. module: openai_connector
+#: model:ir.model.fields,field_description:openai_connector.field_openai_vision_session__write_date
+msgid "Last Updated on"
+msgstr "最終更新日"
+
+#. module: openai_connector
+#: model:ir.model.fields,field_description:openai_connector.field_openai_vision_session__llm_model
+msgid "Model"
+msgstr "モデル"
+
+#. module: openai_connector
+#: model:ir.model.fields,field_description:openai_connector.field_openai_vision_session__name
+msgid "Name"
+msgstr "名称"
+
+#. module: openai_connector
+#: model:ir.ui.menu,name:openai_connector.menu_openai_root
+msgid "OpenAI"
+msgstr "OpenAI"
+
+#. module: openai_connector
+#: model:ir.model,name:openai_connector.model_openai_vision_session
+msgid "OpenAI Vision Session"
+msgstr "OpenAI Visionセッション"
+
+#. module: openai_connector
+#: model:ir.ui.menu,name:openai_connector.menu_openai_vision_sessions
+msgid "OpenAI Vision Sessions"
+msgstr "OpenAI Visionセッション"
+
+#. module: openai_connector
+#: code:addons/openai_connector/models/openai_vision_session.py:0
+#, python-format
+msgid ""
+"OpenAI refused the request:\n"
+"{}"
+msgstr ""
+"OpenAIがリクエストを拒否しました:\n"
+"{}"
+
+#. module: openai_connector
+#: code:addons/openai_connector/models/openai_vision_session.py:0
+#, python-format
+msgid "OpenAI returned invalid JSON."
+msgstr "OpenAI から無効な JSON が返されました"
+
+#. module: openai_connector
+#: model:ir.model.fields,field_description:openai_connector.field_openai_vision_session__previous_response_id
+msgid "Previous Response ID"
+msgstr "前回のレスポンスID"
+
+#. module: openai_connector
+#: model:ir.model.fields,field_description:openai_connector.field_openai_vision_session__reference_code
+msgid "Reference Code"
+msgstr "参照コード"
+
+#. module: openai_connector
+#: model_terms:ir.ui.view,arch_db:openai_connector.view_openai_vision_session_form
+msgid "Response Format"
+msgstr "レスポンス形式"
+
+#. module: openai_connector
+#: model:ir.model.fields,field_description:openai_connector.field_openai_vision_session__response_format_schema
+msgid "Response Format Schema (JSON)"
+msgstr "レスポンス形式スキーマ（JSON）"
+
+#. module: openai_connector
+#: model:ir.model.fields,help:openai_connector.field_openai_vision_session__temperature
+msgid ""
+"Sets response randomness (0–2). Higher is more creative, lower is more "
+"focused."
+msgstr "レスポンスのランダム性を設定します（0〜2）。数値が高いほど創造的になり、低いほど正確な応答になります。"
+
+#. module: openai_connector
+#: model:ir.model.fields,field_description:openai_connector.field_openai_vision_session__store_response
+msgid "Store Response"
+msgstr "レスポンスを保存"
+
+#. module: openai_connector
+#: model:ir.model.fields,help:openai_connector.field_openai_vision_session__instruction
+msgid ""
+"System-level instruction for the assistant. Example: You are a helpful "
+"assistant that answers in Japanese."
+msgstr "OpenAIへのシステムレベルの指示。例：「あなたは日本語で答える親切なアシスタントです。」"
+
+#. module: openai_connector
+#: model:ir.model.fields,field_description:openai_connector.field_openai_vision_session__temperature
+msgid "Temperature"
+msgstr "創造性"
+
+#. module: openai_connector
+#: code:addons/openai_connector/models/openai_vision_session.py:0
+#, python-format
+msgid ""
+"The JSON schema is invalid:\n"
+"{}"
+msgstr ""
+"JSON スキーマが無効です:\n"
+"{}"
+
+#. module: openai_connector
+#: code:addons/openai_connector/models/openai_vision_session.py:0
+#, python-format
+msgid "The inputs are invalid: %s"
+msgstr "Inputsが無効です: %s"
+
+#. module: openai_connector
+#: model:ir.model.fields,field_description:openai_connector.field_openai_vision_session__response_format_enabled
+msgid "Use Structured Output (JSON Schema)"
+msgstr "構造化出力（JSON スキーマ）を使用"
+
+#. module: openai_connector
+#: model:ir.model.fields,field_description:openai_connector.field_openai_vision_session__web_search
+msgid "Use Web Search"
+msgstr "ウェブ検索を使用"
+
+#. module: openai_connector
+#: model_terms:ir.ui.view,arch_db:openai_connector.view_openai_vision_session_form
+msgid "Vision Session"
+msgstr "Visionセッション"
+
+#. module: openai_connector
+#: model:ir.actions.act_window,name:openai_connector.action_openai_vision_sessions
+msgid "Vision Sessions"
+msgstr "Visionセッション"
