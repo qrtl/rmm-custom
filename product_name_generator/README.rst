@@ -56,7 +56,7 @@ To generate product names using the OpenAI API: openai_generated_name
    (Note: You may need to refresh the page to see the updated names.)
 
 If the request with OpenAI fails, you can check the Queue Job records to
-investigate.
+investigate
 
 Bug Tracker
 ===========
