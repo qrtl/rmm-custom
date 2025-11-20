@@ -109,6 +109,7 @@
     <menuitem
         id="data_import_main_menu"
         name="Data Import"
+        web_icon="base_data_import,static/description/icon.jpg"
         groups="base_data_import.group_data_import_log"
     />
     <menuitem
