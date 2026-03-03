@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ===================================
 Report Account Move with Settlement
 ===================================
@@ -13,7 +17,7 @@ Report Account Move with Settlement
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Frmm--custom-lightgray.png?logo=github
@@ -24,7 +28,7 @@ Report Account Move with Settlement
 
 This module does the following:
 
--  Adds settlement report print function to account.move
+- Adds settlement report print function to account.move
 
 The added function is intended to be used by auction sellers so that
 they can keep the details of the settlement invoice for their record.
@@ -39,9 +43,9 @@ Configuration
 
 Update following fields in the company.
 
--  Seller Settlement Report Title
--  Seller Settlement Report Debit Comment
--  Seller Settlement Report Credit Comment
+- Seller Settlement Report Title
+- Seller Settlement Report Debit Comment
+- Seller Settlement Report Credit Comment
 
 Bug Tracker
 ===========

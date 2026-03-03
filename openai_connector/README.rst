@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ================
 OpenAI Connector
 ================
@@ -13,7 +17,7 @@ OpenAI Connector
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Frmm--custom-lightgray.png?logo=github
@@ -39,14 +43,14 @@ Configuration
 
 For the OpenAI API configuration:
 
--  Only the api_key field is required to be set.
--  The base_url, token_type, and header_api_key_string are prefilled by
-   this module.
+- Only the api_key field is required to be set.
+- The base_url, token_type, and header_api_key_string are prefilled by
+  this module.
 
 Basically, the OpenAI session should be added by a specific module that
 depends on this one. Adjust the session attributes:
 
--  Go to Settings → Technical →OpenAI Vision Sessions.
+- Go to Settings → Technical →OpenAI Vision Sessions.
 
 For additional options and usage details, refer to the official
 documentation: https://platform.openai.com/docs

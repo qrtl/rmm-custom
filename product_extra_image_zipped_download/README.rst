@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ===================================
 Product Extra Image Zipped Download
 ===================================
@@ -13,7 +17,7 @@ Product Extra Image Zipped Download
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Frmm--custom-lightgray.png?logo=github
@@ -35,10 +39,10 @@ Usage
 
 To download product extra media images:
 
--  Go to the Products or Product Variants list view.
--  Select the records for which you want to download the extra media
-   images.
--  Under the Action, click 'Download Product Extra Images'.
+- Go to the Products or Product Variants list view.
+- Select the records for which you want to download the extra media
+  images.
+- Under the Action, click 'Download Product Extra Images'.
 
 A ZIP file containing the images will then be downloaded.
 
