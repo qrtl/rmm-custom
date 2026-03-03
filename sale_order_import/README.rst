@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ==================
 Sales Order Import
 ==================
@@ -13,7 +17,7 @@ Sales Order Import
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Frmm--custom-lightgray.png?logo=github
@@ -24,12 +28,12 @@ Sales Order Import
 
 This module provides following functions:
 
--  Imports sales data of designated format from .csv file (with UTF-8
-   encoding), and processes following transactions:
--  Sales Order
--  Outgoing picking
--  Customer Invoice
--  Customer Payment
+- Imports sales data of designated format from .csv file (with UTF-8
+  encoding), and processes following transactions:
+- Sales Order
+- Outgoing picking
+- Customer Invoice
+- Customer Payment
 
 **Table of contents**
 
@@ -39,12 +43,12 @@ This module provides following functions:
 Configuration
 =============
 
--  User should belong to 'Data Import Log' group. Adjust the user access
-   right settings from Settings > Users > (the user) > Access Rights >
-   Technical Settings.
--  Select default journals ('Invoice Journal' and 'Payment Journal') in
-   "Sales Import Defaults" screen. The values are used to propose
-   journals in "Import Sale Order" wizard.
+- User should belong to 'Data Import Log' group. Adjust the user access
+  right settings from Settings > Users > (the user) > Access Rights >
+  Technical Settings.
+- Select default journals ('Invoice Journal' and 'Payment Journal') in
+  "Sales Import Defaults" screen. The values are used to propose
+  journals in "Import Sale Order" wizard.
 
 Usage
 =====

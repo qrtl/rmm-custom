@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 =====================
 Auciton Custom Filter
 =====================
@@ -13,7 +17,7 @@ Auciton Custom Filter
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Frmm--custom-lightgray.png?logo=github
@@ -24,10 +28,10 @@ Auciton Custom Filter
 
 This module does the following:
 
--  Gvies auction users readonly access to ir.filters.group difined by
-   base_custom_filter (auction users cannot use filters, otherwisse)
--  If auction_share in if.filters record is True, the filter can be used
-   by auction users.
+- Gvies auction users readonly access to ir.filters.group difined by
+  base_custom_filter (auction users cannot use filters, otherwisse)
+- If auction_share in if.filters record is True, the filter can be used
+  by auction users.
 
 **Table of contents**
 

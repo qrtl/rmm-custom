@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ======================
 Product Name Generator
 ======================
@@ -13,7 +17,7 @@ Product Name Generator
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Frmm--custom-lightgray.png?logo=github
@@ -38,9 +42,9 @@ Configuration
 
 To customize the prompt sent to OpenAI along with the product image:
 
--  Go to Settings → Technical → OpenAI Vision Sessions.
--  Select the record named "Product Name Generator".
--  Modify the Instruction field as needed.
+- Go to Settings → Technical → OpenAI Vision Sessions.
+- Select the record named "Product Name Generator".
+- Modify the Instruction field as needed.
 
 For other parameters, please refer to the OpenAI official documentation.
 
@@ -49,11 +53,11 @@ Usage
 
 To generate product names using the OpenAI API: openai_generated_name
 
--  Go to product template list view.
--  Select the products for which you want to generate names.
--  Click "Generate Product Name Using OpenAI" from the Action dropdown.
--  OpenAI Generated Name will be updated once the session is complete.
-   (Note: You may need to refresh the page to see the updated names.)
+- Go to product template list view.
+- Select the products for which you want to generate names.
+- Click "Generate Product Name Using OpenAI" from the Action dropdown.
+- OpenAI Generated Name will be updated once the session is complete.
+  (Note: You may need to refresh the page to see the updated names.)
 
 If the request with OpenAI fails, you can check the Queue Job records to
 investigate.

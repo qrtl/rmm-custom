@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ===============================
 Product Internal Reference Code
 ===============================
@@ -13,7 +17,7 @@ Product Internal Reference Code
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Frmm--custom-lightgray.png?logo=github
@@ -24,11 +28,11 @@ Product Internal Reference Code
 
 This module does the following:
 
--  When product is created, the system should auto-generate a sequential
-   number for default_code
+- When product is created, the system should auto-generate a sequential
+  number for default_code
 
-   -  An example of generated number: A00023 (number_next_actual of
-      ir.sequence)
+  - An example of generated number: A00023 (number_next_actual of
+    ir.sequence)
 
 **Table of contents**
 
