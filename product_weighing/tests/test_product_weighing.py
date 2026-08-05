@@ -96,7 +96,7 @@ class TestProductWeighing(common.TransactionCase):
             line.sudo().unlink()
         # The parent product cannot be deleted while a line references it
         # (product_tmpl_id ondelete="restrict"), so the trail is preserved
-        # instead of being erased by cascade. 
+        # instead of being erased by cascade.
         with self.assertRaises(IntegrityError), mute_logger(
             "odoo.sql_db"
         ), self.cr.savepoint():
