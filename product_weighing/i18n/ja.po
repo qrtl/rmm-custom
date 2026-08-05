@@ -6,19 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-04 05:31+0000\n"
-"PO-Revision-Date: 2026-08-04 05:31+0000\n"
+"POT-Creation-Date: 2026-08-05 05:05+0000\n"
+"PO-Revision-Date: 2026-08-05 05:05+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-
-#. module: product_weighing
-#: model_terms:ir.ui.view,arch_db:product_weighing.track_weighing_line_added_template
-msgid "<strong>A weighing line has been added.</strong>"
-msgstr "<strong>計量明細が追加されました。</strong>"
 
 #. module: product_weighing
 #: model:ir.model.constraint,message:product_weighing.constraint_product_weighing_line_weighing_id_uniq
@@ -29,6 +24,11 @@ msgstr "この計量IDの計量明細は既に存在します。"
 #: model:ir.model.fields,help:product_weighing.field_product_weighing_line__dust_detail
 msgid "Breakdown of deducted items (e.g. 'cage cart x2, cart x1')."
 msgstr "控除品目の内訳（例:「かご台車×2, 台車×1」）。"
+
+#. module: product_weighing
+#: model:ir.model.fields,field_description:product_weighing.field_product_weighing_line__company_id
+msgid "Company"
+msgstr "会社"
 
 #. module: product_weighing
 #: model:ir.model.fields,field_description:product_weighing.field_product_weighing_line__create_uid
@@ -96,11 +96,6 @@ msgid "Measured At"
 msgstr "計測日時"
 
 #. module: product_weighing
-#: model_terms:ir.ui.view,arch_db:product_weighing.track_weighing_line_added_template
-msgid "Measured At:"
-msgstr "計測日時:"
-
-#. module: product_weighing
 #: model:ir.model.fields,field_description:product_weighing.field_product_weighing_line__measurer_name
 msgid "Measurer"
 msgstr "計測者"
@@ -109,11 +104,6 @@ msgstr "計測者"
 #: model:ir.model.fields,field_description:product_weighing.field_product_weighing_line__net_weight
 msgid "Net Weight (kg)"
 msgstr "正味重量(kg)"
-
-#. module: product_weighing
-#: model_terms:ir.ui.view,arch_db:product_weighing.track_weighing_line_added_template
-msgid "Net Weight (kg):"
-msgstr "正味重量(kg):"
 
 #. module: product_weighing
 #: model:ir.model.fields,field_description:product_weighing.field_product_weighing_line__product_tmpl_id
@@ -172,11 +162,6 @@ msgid "Weighing ID"
 msgstr "計量ID"
 
 #. module: product_weighing
-#: model_terms:ir.ui.view,arch_db:product_weighing.track_weighing_line_added_template
-msgid "Weighing ID:"
-msgstr "計量ID:"
-
-#. module: product_weighing
 #: model:res.groups,name:product_weighing.group_weighing_integration
 msgid "Weighing Integration"
 msgstr "計量連携"
@@ -193,11 +178,6 @@ msgid "Weighing Lines"
 msgstr "計量明細"
 
 #. module: product_weighing
-#: model_terms:ir.ui.view,arch_db:product_weighing.track_weighing_line_updated_template
-msgid "Weighing line"
-msgstr "計量明細"
-
-#. module: product_weighing
 #: code:addons/product_weighing/models/product_weighing_line.py:0
 #, python-format
 msgid "Weighing lines are append-only and cannot be deleted."
@@ -210,6 +190,14 @@ msgid "Weighing lines are append-only and cannot be modified."
 msgstr "計量明細は追記専用のため変更できません。"
 
 #. module: product_weighing
-#: model_terms:ir.ui.view,arch_db:product_weighing.track_weighing_line_updated_template
-msgid "has been updated."
-msgstr "が更新されました。"
+#: model:ir.model.fields,help:product_weighing.field_product_product__weighing_confirmed_at
+#: model:ir.model.fields,help:product_weighing.field_product_template__weighing_confirmed_at
+msgid ""
+"When the most recent weighing line was recorded in Odoo, i.e. the latest "
+"creation timestamp among the lines. This is the time the external system "
+"pushed the result, not the time the weighing itself took place - for that, "
+"see Measured At on the individual lines. The two differ whenever results are"
+" backfilled after an outage."
+msgstr ""
+"最新の計量明細がOdooに記録された日時、すなわち明細の作成日時のうち最も新しいものです。これは外部システムが結果を送信した日時であり、計量そのものが行われた"
+"日時ではありません。後者については各明細の計測日時を参照してください。障害発生後に結果を遡って登録した場合、両者は異なります。"
