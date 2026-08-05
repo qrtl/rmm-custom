@@ -5,7 +5,7 @@
     "summary": "Append-only weighing lines linked to products for tamper-proof records",
     "category": "Product",
     "version": "15.0.1.0.0",
-    "author": "Quartile Limited",
+    "author": "Quartile",
     "website": "https://www.quartile.co",
     "license": "AGPL-3",
     "depends": ["product"],
