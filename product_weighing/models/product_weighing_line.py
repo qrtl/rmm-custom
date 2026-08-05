@@ -17,6 +17,12 @@ class ProductWeighingLine(models.Model):
         ondelete="restrict",
         index=True,
     )
+    company_id = fields.Many2one(
+        "res.company",
+        related="product_tmpl_id.company_id",
+        store=True,
+        index=True,
+    )
     weighing_id = fields.Char(
         string="Weighing ID",
         required=True,

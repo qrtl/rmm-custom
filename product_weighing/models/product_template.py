@@ -24,6 +24,11 @@ class ProductTemplate(models.Model):
     weighing_confirmed_at = fields.Datetime(
         compute="_compute_weighing_aggregates",
         store=True,
+        help="When the most recent weighing line was recorded in Odoo, i.e. the "
+        "latest creation timestamp among the lines. This is the time the "
+        "external system pushed the result, not the time the weighing itself "
+        "took place - for that, see Measured At on the individual lines. The "
+        "two differ whenever results are backfilled after an outage.",
     )
 
     @api.depends(

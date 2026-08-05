@@ -6,4 +6,12 @@
         <field name="comment">Users allowed to create weighing lines via the
             external integration.</field>
     </record>
+    <record id="product_weighing_line_comp_rule" model="ir.rule">
+        <field name="name">product.weighing.line multi-company</field>
+        <field name="model_id" ref="model_product_weighing_line" />
+        <field name="global" eval="True" />
+        <field
+            name="domain_force"
+        >['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
 </odoo>

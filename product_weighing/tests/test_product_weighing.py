@@ -3,7 +3,7 @@
 
 from psycopg2 import IntegrityError
 
-from odoo import Command
+from odoo import Command, fields
 from odoo.exceptions import AccessError
 from odoo.tests import common
 from odoo.tools import mute_logger
@@ -56,6 +56,19 @@ class TestProductWeighing(common.TransactionCase):
             "image_hash": "a3f1c9e0,91d44b0a",
         }
 
+    def _force_create_date(self, line, value):
+        # create_date is assigned by the ORM from cr.now(), which is cached for
+        # the whole transaction and never reset by a savepoint rollback, so
+        # every record a test creates shares one timestamp. Forcing the column
+        # is the only way to give lines distinct creation times and actually
+        # exercise the max() in the weighing_confirmed_at compute.
+        self.env.cr.execute(
+            "UPDATE product_weighing_line SET create_date = %s WHERE id = %s",
+            (value, line.id),
+        )
+        line.invalidate_cache(["create_date"], line.ids)
+        line.modified(["create_date"])
+
     def test_access_control(self):
         # Create is restricted to the integration group.
         line = self.WeighingLine.with_user(self.integration_user).create(
@@ -83,31 +96,111 @@ class TestProductWeighing(common.TransactionCase):
             line.sudo().unlink()
         # The parent product cannot be deleted while a line references it
         # (product_tmpl_id ondelete="restrict"), so the trail is preserved
-        # instead of being erased by cascade.
-        with self.assertRaises(IntegrityError), mute_logger("odoo.sql_db"):
+        # instead of being erased by cascade. 
+        with self.assertRaises(IntegrityError), mute_logger(
+            "odoo.sql_db"
+        ), self.cr.savepoint():
             self.product.with_user(self.admin_user).unlink()
-            self.product.flush()
+        self.assertTrue(self.product.exists())
 
     def test_weighing_id_uniqueness(self):
         self.WeighingLine.create(self._line_vals("WEIGH-KNG-20260713-0007"))
-        with self.assertRaises(IntegrityError), mute_logger("odoo.sql_db"):
+        with self.assertRaises(IntegrityError), mute_logger(
+            "odoo.sql_db"
+        ), self.cr.savepoint():
             self.WeighingLine.create(self._line_vals("WEIGH-KNG-20260713-0007"))
-            self.WeighingLine.flush()
+        # The constraint is global, not per product: the same external weighing
+        # ID cannot be recorded against a second product either.
+        other_product = self.env["product.template"].create({"name": "Other Product"})
+        with self.assertRaises(IntegrityError), mute_logger(
+            "odoo.sql_db"
+        ), self.cr.savepoint():
+            self.WeighingLine.create(
+                dict(
+                    self._line_vals("WEIGH-KNG-20260713-0007"),
+                    product_tmpl_id=other_product.id,
+                )
+            )
+        self.assertEqual(
+            self.WeighingLine.search_count(
+                [("weighing_id", "=", "WEIGH-KNG-20260713-0007")]
+            ),
+            1,
+        )
 
     def test_product_aggregates(self):
-        lines = self.WeighingLine
-        lines |= self.WeighingLine.create(
-            self._line_vals("WEIGH-KNG-20260713-0010", net_weight=20.70)
+        self.assertEqual(self.product.weighing_count, 0)
+        self.assertFalse(self.product.total_net_weight)
+        self.assertFalse(self.product.weighing_confirmed_at)
+        line_1 = self.WeighingLine.create(
+            self._line_vals(
+                "WEIGH-KNG-20260713-0010",
+                net_weight=20.70,
+                measured_at="2026-07-13 09:41:18",
+            )
         )
-        lines |= self.WeighingLine.create(
-            self._line_vals("WEIGH-KNG-20260713-0011", net_weight=18.80)
+        line_2 = self.WeighingLine.create(
+            self._line_vals(
+                "WEIGH-KNG-20260713-0011",
+                net_weight=18.80,
+                measured_at="2026-07-13 14:05:02",
+            )
         )
-        lines |= self.WeighingLine.create(
-            self._line_vals("WEIGH-KNG-20260714-0021", net_weight=14.80)
+        line_3 = self.WeighingLine.create(
+            self._line_vals(
+                "WEIGH-KNG-20260714-0021",
+                net_weight=14.80,
+                measured_at="2026-07-14 08:12:44",
+            )
         )
+        # Deliberately out of both creation order and measured_at order: line_2
+        # is recorded last, while line_3 was created last and has the latest
+        # measured_at. A compute using min(), the first or last line of the
+        # one2many, or max(measured_at) would each yield a different value than
+        # the one asserted below.
+        self._force_create_date(line_1, "2026-07-20 01:00:00")
+        self._force_create_date(line_2, "2026-07-22 02:00:00")
+        self._force_create_date(line_3, "2026-07-21 03:00:00")
         self.assertEqual(self.product.weighing_count, 3)
         self.assertAlmostEqual(self.product.total_net_weight, 54.30, places=2)
         self.assertEqual(
             self.product.weighing_confirmed_at,
-            max(lines.mapped("create_date")),
+            fields.Datetime.to_datetime("2026-07-22 02:00:00"),
         )
+        self.assertEqual(self.product.weighing_confirmed_at, line_2.create_date)
+
+    def test_company_isolation(self):
+        company_b = self.env["res.company"].create({"name": "Weighing Company B"})
+        product_b = self.env["product.template"].create(
+            {"name": "Company B Product", "company_id": company_b.id}
+        )
+        line_b = self.WeighingLine.create(
+            dict(
+                self._line_vals("WEIGH-KNG-20260713-0030"),
+                product_tmpl_id=product_b.id,
+            )
+        )
+        self.assertEqual(line_b.company_id, company_b)
+        # The integration user belongs to the default company only, so the
+        # multi-company rule hides Company B's line on read...
+        self.assertNotIn(
+            line_b, self.WeighingLine.with_user(self.integration_user).search([])
+        )
+        # ...and blocks creating a line against a product of a company it has
+        # no access to, which would otherwise mutate that product's stored
+        # aggregates through the recompute.
+        with self.assertRaises(AccessError):
+            self.WeighingLine.with_user(self.integration_user).create(
+                dict(
+                    self._line_vals("WEIGH-KNG-20260713-0031"),
+                    product_tmpl_id=product_b.id,
+                )
+            )
+        # A line on a company-shared product stays readable by every internal
+        # user, which is what the base.group_user read grant is there for.
+        shared_line = self.WeighingLine.create(
+            self._line_vals("WEIGH-KNG-20260713-0032")
+        )
+        self.assertFalse(shared_line.company_id)
+        for user in (self.integration_user, self.regular_user):
+            self.assertIn(shared_line, self.WeighingLine.with_user(user).search([]))
