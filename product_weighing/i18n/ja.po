@@ -1,0 +1,203 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* product_weighing
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-05 05:05+0000\n"
+"PO-Revision-Date: 2026-08-05 05:05+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: product_weighing
+#: model:ir.model.constraint,message:product_weighing.constraint_product_weighing_line_weighing_id_uniq
+msgid "A weighing line with this Weighing ID already exists."
+msgstr "この計量IDの計量明細は既に存在します。"
+
+#. module: product_weighing
+#: model:ir.model.fields,help:product_weighing.field_product_weighing_line__dust_detail
+msgid "Breakdown of deducted items (e.g. 'cage cart x2, cart x1')."
+msgstr "控除品目の内訳（例:「かご台車×2, 台車×1」）。"
+
+#. module: product_weighing
+#: model:ir.model.fields,field_description:product_weighing.field_product_weighing_line__company_id
+msgid "Company"
+msgstr "会社"
+
+#. module: product_weighing
+#: model:ir.model.fields,field_description:product_weighing.field_product_weighing_line__create_uid
+msgid "Created by"
+msgstr "作成者"
+
+#. module: product_weighing
+#: model:ir.model.fields,field_description:product_weighing.field_product_weighing_line__create_date
+msgid "Created on"
+msgstr "作成日"
+
+#. module: product_weighing
+#: model:ir.model.fields,field_description:product_weighing.field_product_weighing_line__display_name
+msgid "Display Name"
+msgstr "表示名"
+
+#. module: product_weighing
+#: model:ir.model.fields,field_description:product_weighing.field_product_weighing_line__dust_detail
+msgid "Dust Deduction Detail"
+msgstr "ダスト控除内訳"
+
+#. module: product_weighing
+#: model:ir.model.fields,field_description:product_weighing.field_product_weighing_line__dust_weight
+msgid "Dust Deduction Weight (kg)"
+msgstr "ダスト控除重量(kg)"
+
+#. module: product_weighing
+#: model:ir.model.fields,help:product_weighing.field_product_weighing_line__weighing_id
+msgid "External weighing identifier (e.g. WEIGH-KNG-20260513-0001)."
+msgstr "外部計量ID（例: WEIGH-KNG-20260513-0001）。"
+
+#. module: product_weighing
+#: model:ir.model.fields,field_description:product_weighing.field_product_weighing_line__gross_weight
+msgid "Gross Weight (kg)"
+msgstr "総重量(kg)"
+
+#. module: product_weighing
+#: model:ir.model.fields,field_description:product_weighing.field_product_weighing_line__id
+msgid "ID"
+msgstr "ID"
+
+#. module: product_weighing
+#: model:ir.model.fields,field_description:product_weighing.field_product_weighing_line__image_hash
+msgid "Image Hash"
+msgstr "画像ハッシュ"
+
+#. module: product_weighing
+#: model:ir.model.fields,field_description:product_weighing.field_product_weighing_line____last_update
+msgid "Last Modified on"
+msgstr "最終更新日"
+
+#. module: product_weighing
+#: model:ir.model.fields,field_description:product_weighing.field_product_weighing_line__write_uid
+msgid "Last Updated by"
+msgstr "最終更新者"
+
+#. module: product_weighing
+#: model:ir.model.fields,field_description:product_weighing.field_product_weighing_line__write_date
+msgid "Last Updated on"
+msgstr "最終更新日"
+
+#. module: product_weighing
+#: model:ir.model.fields,field_description:product_weighing.field_product_weighing_line__measured_at
+msgid "Measured At"
+msgstr "計測日時"
+
+#. module: product_weighing
+#: model:ir.model.fields,field_description:product_weighing.field_product_weighing_line__measurer_name
+msgid "Measurer"
+msgstr "計測者"
+
+#. module: product_weighing
+#: model:ir.model.fields,field_description:product_weighing.field_product_weighing_line__net_weight
+msgid "Net Weight (kg)"
+msgstr "正味重量(kg)"
+
+#. module: product_weighing
+#: model:ir.model.fields,field_description:product_weighing.field_product_weighing_line__product_tmpl_id
+msgid "Product"
+msgstr "プロダクト"
+
+#. module: product_weighing
+#: model:ir.model,name:product_weighing.model_product_template
+msgid "Product Template"
+msgstr "プロダクトテンプレート"
+
+#. module: product_weighing
+#: model:ir.model.fields,field_description:product_weighing.field_product_weighing_line__receipt_no
+msgid "Receipt No."
+msgstr "レシート番号"
+
+#. module: product_weighing
+#: model:ir.model.fields,help:product_weighing.field_product_weighing_line__image_hash
+msgid ""
+"SHA-256 of the evidence image(s), comma-separated, for tamper verification."
+msgstr "証跡画像のSHA-256（複数の場合はカンマ区切り）。改ざん検証用。"
+
+#. module: product_weighing
+#: model:ir.model.fields,field_description:product_weighing.field_product_product__total_net_weight
+#: model:ir.model.fields,field_description:product_weighing.field_product_template__total_net_weight
+msgid "Total Net Weight"
+msgstr "合計正味重量"
+
+#. module: product_weighing
+#: model:res.groups,comment:product_weighing.group_weighing_integration
+msgid ""
+"Users allowed to create weighing lines via the\n"
+"            external integration (odoo-upload-system)."
+msgstr "外部連携（odoo-upload-system）経由で計量明細を作成できるユーザ。"
+
+#. module: product_weighing
+#: model_terms:ir.ui.view,arch_db:product_weighing.product_template_view_form
+msgid "Weighing"
+msgstr "計量"
+
+#. module: product_weighing
+#: model:ir.model.fields,field_description:product_weighing.field_product_product__weighing_confirmed_at
+#: model:ir.model.fields,field_description:product_weighing.field_product_template__weighing_confirmed_at
+msgid "Weighing Confirmed At"
+msgstr "計量確定日時"
+
+#. module: product_weighing
+#: model:ir.model.fields,field_description:product_weighing.field_product_product__weighing_count
+#: model:ir.model.fields,field_description:product_weighing.field_product_template__weighing_count
+msgid "Weighing Count"
+msgstr "計量数"
+
+#. module: product_weighing
+#: model:ir.model.fields,field_description:product_weighing.field_product_weighing_line__weighing_id
+msgid "Weighing ID"
+msgstr "計量ID"
+
+#. module: product_weighing
+#: model:res.groups,name:product_weighing.group_weighing_integration
+msgid "Weighing Integration"
+msgstr "計量連携"
+
+#. module: product_weighing
+#: model:ir.model,name:product_weighing.model_product_weighing_line
+msgid "Weighing Line"
+msgstr "計量明細"
+
+#. module: product_weighing
+#: model:ir.model.fields,field_description:product_weighing.field_product_product__weighing_line_ids
+#: model:ir.model.fields,field_description:product_weighing.field_product_template__weighing_line_ids
+msgid "Weighing Lines"
+msgstr "計量明細"
+
+#. module: product_weighing
+#: code:addons/product_weighing/models/product_weighing_line.py:0
+#, python-format
+msgid "Weighing lines are append-only and cannot be deleted."
+msgstr "計量明細は追記専用のため削除できません。"
+
+#. module: product_weighing
+#: code:addons/product_weighing/models/product_weighing_line.py:0
+#, python-format
+msgid "Weighing lines are append-only and cannot be modified."
+msgstr "計量明細は追記専用のため変更できません。"
+
+#. module: product_weighing
+#: model:ir.model.fields,help:product_weighing.field_product_product__weighing_confirmed_at
+#: model:ir.model.fields,help:product_weighing.field_product_template__weighing_confirmed_at
+msgid ""
+"When the most recent weighing line was recorded in Odoo, i.e. the latest "
+"creation timestamp among the lines. This is the time the external system "
+"pushed the result, not the time the weighing itself took place - for that, "
+"see Measured At on the individual lines. The two differ whenever results are"
+" backfilled after an outage."
+msgstr ""
+"最新の計量明細がOdooに記録された日時、すなわち明細の作成日時のうち最も新しいものです。これは外部システムが結果を送信した日時であり、計量そのものが行われた"
+"日時ではありません。後者については各明細の計測日時を参照してください。障害発生後に結果を遡って登録した場合、両者は異なります。"
